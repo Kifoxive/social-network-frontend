@@ -1,0 +1,31 @@
+.avatar {
+  display: flex;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: 2px solid rgb(39, 39, 39);
+  background-color: rgb(107, 69, 16);
+  padding: 0;
+}
+.avatar p {
+  margin: auto;
+}
+
+.middle {
+  height: 60px;
+  width: 60px;
+}
+.avatar.middle p {
+  font-size: 30px;
+  color: burlywood;
+  text-transform: uppercase;
+}
+
+.small {
+  height: 40px;
+  width: 40px;
+}
+.avatar.small p {
+  font-size: 20px;
+  color: burlywood;
+  text-transform: uppercase;
+}

@@ -1,0 +1,65 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.wrapper {
+  width: 700px;
+}
+
+.wrapper > div {
+  display: flex;
+  /* flex-flow: column nowrap; */
+  justify-items: flex-start;
+}
+
+.btn button {
+  font-size: 2rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.title input {
+  font-size: 3rem;
+  font-weight: 900;
+}
+.title div :before,
+:after {
+  display: none;
+}
+
+.image {
+  width: 700px;
+}
+
+.image img {
+  width: 100%;
+}
+
+.image :global .cm-s-easymde {
+  border: 0;
+  font-size: 22px;
+}
+.image :global .editor-toolbar {
+  border: 0;
+  background-color: rgb(0 0 0 / 2%);
+}
+
+.tags {
+  margin: 15px 0;
+}
+.tags input {
+  font-size: 2rem;
+}
+
+.editor {
+  width: 700px;
+  background-color: white;
+}
+
+.buttons {
+  display: flex;
+}
+.buttons button {
+  margin-right: 15px;
+}
