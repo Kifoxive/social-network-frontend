@@ -8,10 +8,42 @@ export const fetchMineItems = createAsyncThunk(
     return data
   }
 )
+export const fetchOneItem = createAsyncThunk(
+  "items/fetchOneItem",
+  async (id) => {
+    const { data } = await itemsApi.getOneItem(id)
+    return data
+  }
+)
+export const fetchRemoveItem = createAsyncThunk(
+  "items/fetchRemoveItem",
+  async (id) => {
+    const { data } = await itemsApi.removeItem(id)
+    return data
+  }
+)
+export const fetchSendItem = createAsyncThunk(
+  "items/fetchSendItem",
+  async (fields) => {
+    const { data } = await itemsApi.sendItem(fields)
+    return data
+  }
+)
+export const fetchUpdateItem = createAsyncThunk(
+  "items/fetchUpdateItem",
+  async (id) => {
+    const { data } = await itemsApi.updateItem(id)
+    return data
+  }
+)
 
 const initialState = {
   myItems: {
     items: [],
+    status: "loading",
+  },
+  currentItem: {
+    item: {},
     status: "loading",
   },
 }
@@ -33,6 +65,20 @@ const itemsSlice = createSlice({
     [fetchMineItems.rejected]: (state) => {
       state.myItems.status = "error"
       state.myItems.items = []
+    },
+
+    // get one item
+    [fetchOneItem.pending]: (state) => {
+      state.currentItem.status = "loading"
+      state.currentItem.item = {}
+    },
+    [fetchOneItem.fulfilled]: (state, action) => {
+      state.currentItem.status = "loaded"
+      state.currentItem.item = action.payload
+    },
+    [fetchOneItem.rejected]: (state) => {
+      state.currentItem.status = "error"
+      state.currentItem.item = {}
     },
   },
 })

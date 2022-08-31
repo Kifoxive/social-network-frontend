@@ -1,0 +1,14 @@
+.commentContainer {
+  width: 800px;
+  padding: 10px;
+  box-shadow: 0 0 2px 1px rgb(212, 212, 212);
+  background-color: white;
+  margin: 20px 0;
+}
+.commentContent {
+  min-height: 40px;
+  padding: 10px 50px;
+}
+.commentContent p {
+  font-size: 2rem;
+}

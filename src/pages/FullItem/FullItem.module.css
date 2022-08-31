@@ -5,20 +5,21 @@
 .wrapper {
   width: 800px;
 }
-
-.addButton {
+.deleteButton {
+  margin: 30px 0;
+  padding: 10px 10px;
   text-align: end;
-  margin: 0 0 30px;
 }
-.addButton a {
+.deleteButton button {
+  background-color: red;
   padding: 5px 35px;
-  font-size: 2rem;
-  background-color: rgb(153, 227, 116);
   border-radius: 10px;
-  box-shadow: 0 5px 0 rgb(145, 202, 101);
   font-size: 1.8rem;
+  color: whitesmoke;
+  box-shadow: 0 5px 0 rgb(187, 0, 0);
 }
-.addButton a:hover {
+
+.deleteButton:hover button {
   position: relative;
   top: 5px;
   box-shadow: none;

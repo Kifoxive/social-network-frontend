@@ -9,15 +9,11 @@ const Navbar = (props) => {
    return <nav className={styles.nav}>
       {props.isAuth
          ? <div>
-            <button className={styles.btn} onClick={props.onClickLogout}>LOG OUT</button>
-            {/* <label htmlFor="menuItems">menu</label>
-            <select name='menuItems' id="menuItems">
-               <option value="createPost"><Link className={styles.btn} to="/add-post"><p>Create post</p></Link></option>
-            </select> */}
+            <button className={styles.btn} onClick={props.onClickLogout}><p>LOG OUT</p></button>
             <div className={styles.dropdown}>
-               <button className={`${styles.dropbtn} ${styles.btn}`}>Menu</button>
+               <button className={`${styles.btn} ${styles.dropBtn}`}><p>Menu</p></button>
                <div className={styles.dropdownContent}>
-                  <Link to="/add-post">profile</Link>
+                  <Link to="/">home</Link>
                   <Link to="/add-post">create post</Link>
                   <Link to="/my-items">my items</Link>
                </div>

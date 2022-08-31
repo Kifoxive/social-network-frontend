@@ -1,6 +1,7 @@
 .nav {
   text-align: end;
   padding: 20px;
+  margin-bottom: 30px;
 }
 
 .nav > div {
@@ -11,18 +12,18 @@
 }
 
 .btn {
+  margin: 0 10px;
+  display: flex;
   cursor: pointer;
   width: 140px;
   box-sizing: border-box;
-  height: 50px;
+  padding: 5px 0;
   background-color: lightgrey;
   border-radius: 0.4rem;
   border: 2px solid rgb(91, 73, 27);
   font-family: sans-serif;
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: black;
-  text-decoration: none;
-  text-align: center;
 }
 
 .btn:hover {
@@ -31,14 +32,17 @@
 }
 
 .btn > p {
-  line-height: 0.9rem;
+  margin: auto;
 }
 
 .dropdown {
   display: inline-block;
   position: relative;
   width: 140px;
-  margin: 0 10px;
+  margin-right: 10px;
+}
+.dropBtn {
+  margin: 0;
 }
 .dropdownContent {
   position: absolute;

@@ -1,10 +1,11 @@
 import React from 'react'
 import styles from './Post.module.css'
-import Avatar from '../Avatar/Avatar';
 import { Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown'
 import { useDispatch } from 'react-redux';
 import { fetchRemovePost } from '../../redux/slices/postsSlice';
+import Avatar from '../Avatar/Avatar';
+import AuthorInfo from '../AuthorInfo/AuthorInfo';
 
 const Post = ({
    _id,
@@ -40,19 +41,7 @@ const Post = ({
          <div className={styles.postWrapper}>
             {imageUrl && <div className={styles.image}><img src={`http://localhost:3001${imageUrl}`} alt="post" /></div>}
             <div className={styles.postContent}>
-               <div className={styles.authorInfo}>
-                  <Avatar userData={user} size='small' />
-                  <div className={styles.authorPostData}>
-                     <div><b className={styles.authorName}>{user.fullName}</b></div>
-                     <div><span className={styles.date}>{date}</span></div>
-                  </div>
-                  {isEditable && (
-                     <div className={styles.editButton}>
-                        <a href={`/posts/${_id}/edit`}>edit</a>
-                        <button onClick={onClickRemove}>x</button>
-                     </div>
-                  )}
-               </div>
+               <AuthorInfo user={user} createdAt={createdAt} isEditable={isEditable} path="posts" id={_id} />
                <div className={styles.content}>
                   <div className={styles.title}>
                      <h2>{isFullPost ? title : <Link to={`/posts/${_id}`}>{title}</Link>}</h2>

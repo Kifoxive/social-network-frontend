@@ -55,10 +55,19 @@ export const itemsApi = {
   getOneItem(id) {
     return instance.get(`items/${id}`)
   },
+  getItemsByTag(name) {
+    return instance.get(`items/`, { params: { tag: name } })
+  },
   updateItem(fields) {
     return instance.patch(`items/${fields.id}`, fields)
   },
   removeItem(id) {
     return instance.delete(`items/${id}`)
+  },
+}
+
+export const commentsApi = {
+  getComments(id) {
+    return instance.get(`comments/${id}`)
   },
 }

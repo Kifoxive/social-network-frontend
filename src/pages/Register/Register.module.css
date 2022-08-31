@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+.wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px 40px;
+  box-shadow: 0 0 2px 1px rgb(212, 212, 212);
+  background-color: white;
+}
+.wrapper form {
+  text-align: center;
+}
+
+.title {
+  margin: 20px 0;
+  font-size: 4rem;
+}
+
+.input {
+  padding: 5px 0;
+}
+.input input {
+  padding: 5px;
+  border-radius: 5px;
+  border: 2px solid gainsboro;
+  font-size: 1.6rem;
+}
+.input input:focus {
+  border: 2px solid gray;
+}
+
+.sendButton {
+  margin-top: 20px;
+  background-color: lightgray;
+  box-shadow: 0 5px 0 0 darkgray;
+  font-size: 1.6rem;
+  color: black;
+}

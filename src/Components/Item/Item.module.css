@@ -1,27 +1,155 @@
 .itemContainer {
   display: flex;
-  width: 100%;
+  width: 800px;
   height: 200px;
   margin: 20px 0;
   box-shadow: 0 0 2px 1px rgb(212, 212, 212);
 }
+.itemContainer:hover .itemWrapper {
+  background-color: whitesmoke;
+}
 
 .image {
-  flex: 1;
-  background-color: lightgrey;
+  box-sizing: border-box;
+  padding: 2px;
+  height: 200px;
+  flex: 2;
+  background-color: white;
 }
 .image img {
-  height: 200px;
+  height: 100%;
   width: 100%;
   object-fit: cover;
 }
 
 .itemWrapper {
-  flex: 2;
-  padding: 10px;
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  flex-flow: column nowrap;
+  height: 100%;
+  overflow: hidden;
+  padding: 0 20px 10px;
   background-color: white;
 }
+
 .title {
+  margin: 0 0 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  transition: 0.5s;
+}
+.title h2 {
+  margin: 10px 0 0;
   text-align: left;
+  font-size: 2rem;
+  font-weight: bold;
+}
+.title h2 a:hover {
+  text-decoration: underline;
+}
+.editLink {
+  text-align: right;
+  width: 30px;
+  padding: 5px;
+  transition: 0.5s;
+}
+.editLink svg {
+  transition: 0.5s;
+}
+.editLink:hover svg {
+  transform: rotateY(180deg);
+}
+
+.text {
+  flex: 1;
+  text-align: left;
+}
+.text p {
+  font-size: 1.6rem;
+  line-height: 1.8rem;
+}
+
+.price p {
+  text-align: right;
   font-size: 3rem;
+  color: rgb(4, 90, 4);
+}
+.price p span {
+  font-size: 0.4em;
+}
+
+/* full item styles */
+
+.itemContainer_full {
+  width: 800px;
+  min-height: 200px;
+  box-shadow: 0 0 2px 1px rgb(212, 212, 212);
+}
+
+.image_full {
+  background-color: whitesmoke;
+  width: 100%;
+  max-height: 800px;
+  min-height: 200px;
+  overflow: hidden;
+}
+.image_full img {
+  width: 100%;
+}
+
+.itemWrapper_full {
+  padding: 10px;
+}
+
+.bottomSide {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 10px 0 0;
+}
+
+.tags {
+  padding-left: 5px;
+  margin-right: 20px;
+}
+.tags i {
+  margin-right: 10px;
+  font-weight: lighter;
+}
+.tags i:hover {
+  font-weight: normal;
+}
+
+.paymentInfo {
+  display: flex;
+  align-items: flex-end;
+}
+.addToCart {
+  padding-bottom: 5px;
+  margin-left: 10px;
+}
+.addToCart button {
+  background-color: rgb(11, 142, 11);
+  padding: 5px 35px;
+  border-radius: 10px;
+  font-size: 3rem;
+  color: whitesmoke;
+  box-shadow: 0 5px 0 green;
+}
+.addToCart:hover button {
+  position: relative;
+  top: 5px;
+  box-shadow: none;
+}
+.comments {
+  margin: 0 14px 2px;
+  font-size: 1.6rem;
+}
+.comments a {
+  color: darkgray;
+}
+.comments a:hover {
+  color: gray;
 }

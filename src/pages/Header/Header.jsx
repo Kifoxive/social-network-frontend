@@ -1,7 +1,7 @@
 import React from 'react'
 import { logout, selectIsAuth } from '../../redux/slices/authSlice'
 import { useDispatch, useSelector } from 'react-redux';
-import Navbar from '../../Components/Navbar/Navbar';
+import Navbar from '../../components/Navbar/Navbar';
 
 const Header = () => {
 
