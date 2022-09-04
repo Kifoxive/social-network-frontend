@@ -5,9 +5,10 @@ import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencil, faComment } from '@fortawesome/free-solid-svg-icons'
 import AuthorInfo from '../../components/AuthorInfo/AuthorInfo';
+import { InputButton } from '../Input/Input';
 
 const Item = ({
-   title, text, imageUrl, tags, commentsLength, createdAt, price, currency, _id, user, isFullItem
+   title, text, imageUrl, tags, commentsCount, createdAt, price, currency, _id, user, isFullItem
 }) => {
    const userData = useSelector((state) => state.auth.data)
 
@@ -39,11 +40,13 @@ const Item = ({
                <div className={styles.paymentInfo}>
                   <div className={styles.comments}>
                      <Link to={`/comments/${_id}`}>
-                        <FontAwesomeIcon icon={faComment} /> {commentsLength}
+                        <FontAwesomeIcon icon={faComment} /> {commentsCount}
                      </Link>
                   </div>
                   <div className={styles.price}><p>{priceText} <span>{currency}</span></p></div>
-                  <div className={styles.addToCart}><button>add</button></div>
+                  <div className={styles.addToCart}>
+                     <InputButton value="add" />
+                  </div>
                </div>
             </div>
          </div>

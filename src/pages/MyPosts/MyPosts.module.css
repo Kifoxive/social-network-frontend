@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+.wrapper {
+  width: 800px;
+}
+
+.addButton {
+  text-align: end;
+  margin: 0 0 30px;
+}
+.addButton a {
+  padding: 5px 35px;
+  font-size: 2rem;
+  background-color: rgb(153, 227, 116);
+  border-radius: 10px;
+  box-shadow: 0 5px 0 rgb(145, 202, 101);
+  font-size: 1.8rem;
+}
+.addButton a:hover {
+  position: relative;
+  top: 5px;
+  box-shadow: none;
+}

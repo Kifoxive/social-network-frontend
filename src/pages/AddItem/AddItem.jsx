@@ -58,7 +58,6 @@ const AddItem = () => {
             title, imageUrl, tags: tags.split(',').map(item => item.trim()), text, id, price, currency
          }
          const result = isEditing ? await dispatch(fetchUpdateItem(fields)) : await dispatch(fetchSendItem(fields))
-         console.log(result.payload);
 
          navigate(`/items/${result.payload._id}`)
       } catch (err) {

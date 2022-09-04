@@ -20,6 +20,12 @@
 .date span {
   font-weight: 100;
 }
+
+.actionsSide {
+  display: flex;
+  align-items: flex-start;
+}
+
 .editLink {
   text-align: right;
   width: 30px;
@@ -27,8 +33,26 @@
   transition: 0.5s;
 }
 .editLink svg {
+  font-size: 1.6rem;
   transition: 0.5s;
+  color: gray;
 }
 .editLink:hover svg {
   transform: rotateY(180deg);
+  color: black;
+}
+
+.removeButton {
+  display: inline;
+  margin-left: 10px;
+  font-size: 2rem;
+  background-color: transparent;
+  color: gray;
+}
+.removeButton:hover {
+  color: black;
+}
+.buttonDisabled,
+.buttonDisabled:hover {
+  color: gray;
 }

@@ -1,10 +1,10 @@
 .postContainer {
   display: flex;
   justify-content: center;
+  margin: 20px 0;
 }
 .postWrapper {
   width: 800px;
-  margin: 20px 0;
   background-color: white;
   box-shadow: 0 0 2px 1px rgb(212, 212, 212);
 }
@@ -56,12 +56,16 @@
 }
 .title h2,
 .title h2 a {
-  font-size: 3rem;
+  font-size: 2.6rem;
   text-align: left;
   color: black;
 }
+
+.text {
+  margin-top: 10px;
+}
 .text p {
-  font-size: 2rem;
+  font-size: 1.6rem;
   text-align: left;
 }
 

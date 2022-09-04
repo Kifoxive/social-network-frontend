@@ -24,3 +24,20 @@
   top: 5px;
   box-shadow: none;
 }
+.buttonDisabled {
+  opacity: 0.5;
+}
+
+.inputTextareaContainer {
+  padding: 5px 0;
+}
+.inputTextareaContainer textarea {
+  padding: 5px;
+  border-radius: 5px;
+  border: 2px solid gainsboro;
+  font-size: 1.6rem;
+  width: 100%;
+}
+.inputTextareaContainer textarea:focus {
+  border: 2px solid gray;
+}

@@ -19,6 +19,10 @@ export const fetchSendPost = createAsyncThunk(
     return data
   }
 )
+export const fetchMinePosts = createAsyncThunk("posts/fetchMine", async () => {
+  const { data } = await postsApi.getMine()
+  return data
+})
 export const fetchOnePost = createAsyncThunk(
   "posts/fetchOnePost",
   async (id) => {
@@ -50,6 +54,10 @@ const initialState = {
     item: {},
     status: "loading",
   },
+  myPosts: {
+    items: [],
+    status: "loading",
+  },
 }
 
 const postsSlice = createSlice({
@@ -69,6 +77,19 @@ const postsSlice = createSlice({
     [fetchPosts.rejected]: (state) => {
       state.allPosts.status = "error"
       state.allPosts.items = []
+    },
+    // get my posts
+    [fetchMinePosts.pending]: (state) => {
+      state.myPosts.status = "loading"
+      state.myPosts.items = []
+    },
+    [fetchMinePosts.fulfilled]: (state, action) => {
+      state.myPosts.status = "loaded"
+      state.myPosts.items = action.payload
+    },
+    [fetchMinePosts.rejected]: (state) => {
+      state.myPosts.status = "error"
+      state.myPosts.items = []
     },
     // get post
     [fetchOnePost.pending]: (state) => {

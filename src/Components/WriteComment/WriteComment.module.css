@@ -1,0 +1,35 @@
+.writeCommentWrapper {
+  width: 800px;
+  padding: 10px;
+  box-shadow: 0 0 2px 1px rgb(212, 212, 212);
+  background-color: white;
+}
+
+.userInfoContainer {
+  align-items: center;
+  display: flex;
+  margin-bottom: 10px;
+}
+.userInfoContainer b {
+  margin-left: 10px;
+  font-size: 1.6rem;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 10px 0px 50px;
+}
+
+.submitButton {
+  display: flex;
+  justify-content: flex-end;
+}
+.submitButton button {
+  background-color: lightgray;
+  padding: 5px 35px;
+  border-radius: 10px;
+  font-size: 1.4rem;
+  color: gray;
+  box-shadow: 0 5px 0 darkgray;
+}

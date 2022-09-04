@@ -4,6 +4,8 @@ import { useParams } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchComments } from '../../redux/slices/commentsSlice';
 import Comment from '../../components/Comment/Comment';
+import WriteComment from '../../components/WriteComment/WriteComment';
+import CommentSkeleton from '../../components/Comment/CommentSkeleton';
 
 
 const Comments = () => {
@@ -20,10 +22,13 @@ const Comments = () => {
    }, [id])
 
    return (
-
       <div className={styles.container}>
          <div className={styles.wrapper}>
-            {isLoaded ? comments : <div>Loading...</div>}
+            <WriteComment item={id} />
+            {isLoaded
+               ? comments
+               : <><CommentSkeleton />
+                  <CommentSkeleton /></>}
          </div>
       </div>
    )

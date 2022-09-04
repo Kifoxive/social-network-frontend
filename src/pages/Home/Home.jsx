@@ -10,11 +10,8 @@ const Home = () => {
    const postsData = useSelector((state) => state.posts.allPosts.items)
    const userData = useSelector((state) => state.auth.data)
 
-
    const posts = postsData.map((item, index) => <Post key={index} {...item}
       isEditable={userData?._id === item.user._id} isFullPost={false} />)
-
-
 
    React.useEffect(() => {
       dispatch(fetchPosts())

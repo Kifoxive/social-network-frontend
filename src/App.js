@@ -7,6 +7,7 @@ import {
   Header,
   Register,
   AddPost,
+  MyPosts,
   MyItems,
   AddItem,
   FullItem,
@@ -33,6 +34,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/add-post" element={<AddPost />} />
+        <Route path="/my-posts" element={<MyPosts />} />
         <Route path="/posts/:id" element={<FullPost />} />
         <Route path="/posts/:id/edit" element={<AddPost />} />
         <Route path="/add-item" element={<AddItem />} />

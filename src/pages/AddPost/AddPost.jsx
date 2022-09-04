@@ -27,7 +27,7 @@ const AddPost = () => {
             setTitle(res.payload.title)
             setText(res.payload.text)
             setImageUrl(res.payload.imageUrl)
-            setTags(res.payload.tags.join(','))
+            setTags(res.payload.tags.join(', '))
          }).catch((e) => {
             console.warn(e)
          })
@@ -57,9 +57,7 @@ const AddPost = () => {
             title, imageUrl, tags, text, id
          }
          const result = isEditing ? await dispatch(fetchUpdatePost(fields)) : await dispatch(fetchSendPost(fields))
-
          navigate(`/posts/${result.payload._id}`)
-         // navigate(`/posts/${result.meta.arg.id}`)
       } catch (err) {
          console.warn(err)
       }

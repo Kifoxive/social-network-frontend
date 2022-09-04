@@ -13,6 +13,9 @@ export const postsApi = {
   getPosts() {
     return instance.get(`posts`)
   },
+  getMine() {
+    return instance.get("posts/mine")
+  },
   sendImage(formData) {
     return instance.post(`upload`, formData)
   },
@@ -55,9 +58,9 @@ export const itemsApi = {
   getOneItem(id) {
     return instance.get(`items/${id}`)
   },
-  getItemsByTag(name) {
-    return instance.get(`items/`, { params: { tag: name } })
-  },
+  // getItemsByTag(name) {
+  //   return instance.get(`items/`, { params: { tag: name } })
+  // },
   updateItem(fields) {
     return instance.patch(`items/${fields.id}`, fields)
   },
@@ -69,5 +72,13 @@ export const itemsApi = {
 export const commentsApi = {
   getComments(id) {
     return instance.get(`comments/${id}`)
+  },
+  sendComment(fields) {
+    return instance.post(`comments`, fields)
+  },
+  removeComment(params) {
+    return instance.delete(`comments/${params.id}`, {
+      data: { item: params.item },
+    })
   },
 }

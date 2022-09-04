@@ -3,11 +3,12 @@ import styles from './AuthorInfo.module.css'
 import Avatar from '../Avatar/Avatar';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPencil } from '@fortawesome/free-solid-svg-icons'
+import { faPencil, faRemove } from '@fortawesome/free-solid-svg-icons'
+import cls from 'classnames'
 
 
 const AuthorInfo = ({
-   user, createdAt, isEditable, id, path
+   user, createdAt, isEditable, id, path, onRemove, isRemovable, removeIsDisable
 }) => {
 
 
@@ -26,7 +27,10 @@ const AuthorInfo = ({
                <div><span className={styles.date}>{date}</span></div>
             </div>
          </div>
-         {isEditable && <Link to={`/${path}/${id}/edit`} className={styles.editLink}><FontAwesomeIcon icon={faPencil} /></Link>}
+         <div className={styles.actionsSide}>
+            {isEditable && <Link to={`/${path}/${id}/edit`} className={styles.editLink}><FontAwesomeIcon icon={faPencil} /></Link>}
+            {isRemovable && <button disabled={removeIsDisable} className={cls({ [styles.buttonDisabled]: removeIsDisable }, styles.removeButton)} onClick={onRemove}><FontAwesomeIcon icon={faRemove} /></button>}
+         </div>
       </div>
    )
 }

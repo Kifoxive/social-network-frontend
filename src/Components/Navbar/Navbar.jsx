@@ -14,7 +14,7 @@ const Navbar = (props) => {
                <button className={`${styles.btn} ${styles.dropBtn}`}><p>Menu</p></button>
                <div className={styles.dropdownContent}>
                   <Link to="/">home</Link>
-                  <Link to="/add-post">create post</Link>
+                  <Link to="/my-posts">my posts</Link>
                   <Link to="/my-items">my items</Link>
                </div>
             </div>

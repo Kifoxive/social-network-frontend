@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown'
 import { useDispatch } from 'react-redux';
 import { fetchRemovePost } from '../../redux/slices/postsSlice';
-import Avatar from '../Avatar/Avatar';
 import AuthorInfo from '../AuthorInfo/AuthorInfo';
 
 const Post = ({
@@ -28,13 +27,6 @@ const Post = ({
       dispatch(fetchRemovePost(_id))
    }
 
-
-
-   const getDate = (date) => {
-      const dateObj = new Date(date)
-      return `${dateObj.getDate()}-${dateObj.getMonth() + 1}-${dateObj.getFullYear()}`
-   }
-   const date = getDate(createdAt)
 
    return (
       <div className={styles.postContainer}>

@@ -7,8 +7,52 @@
 }
 .commentContent {
   min-height: 40px;
-  padding: 10px 50px;
+  padding: 20px 10px 10px 50px;
 }
 .commentContent p {
-  font-size: 2rem;
+  font-size: 1.6rem;
+}
+
+/* skeleton */
+
+.skeletonCommentContainer {
+  width: 800px;
+  padding: 10px;
+  box-shadow: 0 0 2px 1px rgb(212, 212, 212);
+  background-color: white;
+  margin: 20px 0;
+}
+.skeletonInfo {
+  display: flex;
+}
+.skeletonSquare {
+  height: 40px;
+  width: 40px;
+  border-radius: 10px;
+  background-color: lightgray;
+}
+
+.skeletonCommentData {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 5px 10px;
+}
+.skeletonCommentData div {
+  height: 12px;
+  width: 100px;
+  border-radius: 10px;
+  background-color: lightgray;
+}
+.skeletonCommentData :first-child {
+  width: 60px;
+}
+.skeletonContent {
+  padding: 10px 20px 0px 60px;
+}
+.skeletonText {
+  height: 50px;
+  width: 100%;
+  border-radius: 10px;
+  background-color: lightgray;
 }
