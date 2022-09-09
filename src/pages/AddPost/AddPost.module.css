@@ -1,19 +1,19 @@
 .container {
   display: flex;
   justify-content: center;
+  padding-bottom: 100px;
 }
 
 .wrapper {
-  width: 700px;
-}
-
-.wrapper > div {
-  display: flex;
-  /* flex-flow: column nowrap; */
-  justify-items: flex-start;
+  width: 800px;
+  text-align: center;
+  padding: 20px;
+  box-shadow: 0 0 2px 1px rgb(212, 212, 212);
+  background-color: white;
 }
 
 .btn button {
+  margin: 10px;
   font-size: 2rem;
   padding: 0.5rem;
   border-radius: 0.5rem;
@@ -24,13 +24,10 @@
   font-size: 3rem;
   font-weight: 900;
 }
-.title div :before,
-:after {
-  display: none;
-}
 
 .image {
-  width: 700px;
+  width: 100%;
+  padding: 10px 0;
 }
 
 .image img {
@@ -46,21 +43,48 @@
   background-color: rgb(0 0 0 / 2%);
 }
 
-.tags {
-  margin: 15px 0;
-}
-.tags input {
-  font-size: 2rem;
+.input {
+  width: 50%;
 }
 
-.editor {
-  width: 700px;
-  background-color: white;
-}
-
-.buttons {
+.selectedTitlesContainer {
   display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  margin: 3px 0;
+  padding: 5px;
+  border-radius: 5px;
+  border: 2px solid gainsboro;
 }
-.buttons button {
-  margin-right: 15px;
+.itemsCounter {
+  position: relative;
+  padding-right: 10px;
+  font-size: 1.6rem;
+}
+.itemsCounter span {
+  position: relative;
+}
+.itemsCounter span::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: burlywood;
+}
+.selectedTitle {
+  text-align: center;
+  margin: 5px;
+  padding: 5px 25px;
+  background-color: burlywood;
+  border-radius: 10px;
+  font-size: 1.4rem;
+}
+
+.selectItemsWrapper {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 20px;
+  padding-bottom: 20px;
 }

@@ -1,6 +1,5 @@
 import React from 'react'
 import styles from './Input.module.css'
-// import cls from 'classnames'
 
 export const InputText = ({
    onChange, value, placeholder, ...props
@@ -15,11 +14,11 @@ export const InputText = ({
 }
 
 
-export const InputButton = ({ value, onClicking, isDisabled, ...props
+export const InputButton = ({ value, onClick, isDisabled, ...props
 }) => {
    return (
       <div className={styles.buttonContainer}>
-         <button className={isDisabled ? styles.buttonDisabled : ''} disabled={isDisabled} onClick={onClicking} {...props}>{value}</button>
+         <button className={isDisabled ? styles.buttonDisabled : ''} disabled={isDisabled} onClick={onClick} {...props}>{value}</button>
       </div>
    )
 }

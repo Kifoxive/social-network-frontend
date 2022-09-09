@@ -60,7 +60,7 @@ const itemsSlice = createSlice({
     },
     [fetchMineItems.fulfilled]: (state, action) => {
       state.myItems.status = "loaded"
-      state.myItems.items = action.payload
+      state.myItems.items = action.payload.items
     },
     [fetchMineItems.rejected]: (state) => {
       state.myItems.status = "error"

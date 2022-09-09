@@ -29,10 +29,10 @@ const Item = ({
          <div className={styles.image_full}><img src={`http://localhost:3001${imageUrl}`} alt="item" /></div>
          <div className={styles.itemWrapper_full}>
             <AuthorInfo user={user} createdAt={createdAt} isEditable={isEditable} path="items" id={_id} />
-            <div className={styles.title}>
+            <div className={`${styles.tittle_full} ${styles.title}`}>
                <h2>{title}</h2>
             </div>
-            <div className={styles.text}><p>{textFormat}</p></div>
+            <div className={`${styles.text_full} ${styles.text}`}><p>{textFormat}</p></div>
             <div className={styles.bottomSide}>
                <div className={styles.tags}>{
                   tags.map((item, index) => <i key={index}><Link to={`/tags/${item}`}>#{item}</Link></i>)

@@ -23,3 +23,9 @@
   top: 5px;
   box-shadow: none;
 }
+
+.productsContainer {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 10px;
+}

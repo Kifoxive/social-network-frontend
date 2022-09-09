@@ -3,7 +3,7 @@
   box-sizing: border-box;
   border-radius: 10px;
   border: 2px solid rgb(39, 39, 39);
-  background-color: rgb(107, 69, 16);
+  background-color: gray;
   padding: 0;
 }
 .avatar p {
@@ -26,6 +26,6 @@
 }
 .avatar.small p {
   font-size: 20px;
-  color: burlywood;
+  color: white;
   text-transform: uppercase;
 }

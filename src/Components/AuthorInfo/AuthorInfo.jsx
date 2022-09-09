@@ -24,7 +24,7 @@ const AuthorInfo = ({
             <Avatar userData={user} size='small' />
             <div className={styles.authorPostData}>
                <div><b className={styles.authorName}>{user.fullName}</b></div>
-               <div><span className={styles.date}>{date}</span></div>
+               <div className={styles.date}><span>{date}</span></div>
             </div>
          </div>
          <div className={styles.actionsSide}>

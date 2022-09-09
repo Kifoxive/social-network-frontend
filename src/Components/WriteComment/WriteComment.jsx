@@ -33,7 +33,7 @@ const WriteComment = ({ item }) => {
          <div className={styles.inputContainer}>
             <InputTextarea value={text} onChange={(e) => setText(e.target.value)} placeholder="comment text..." />
             <div className={styles.submitButton}>
-               <InputButton value="comment" onClicking={onSubmit} isDisabled={isDisabled} />
+               <InputButton value="comment" onClick={onSubmit} isDisabled={isDisabled} />
             </div>
          </div>
       </div>

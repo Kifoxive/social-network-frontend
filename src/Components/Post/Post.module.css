@@ -9,7 +9,7 @@
   box-shadow: 0 0 2px 1px rgb(212, 212, 212);
 }
 .postContent {
-  padding: 20px;
+  padding: 10px;
 }
 
 .image {
@@ -48,7 +48,7 @@
 
 .content {
   margin: 10px 0 0;
-  padding: 0 20px 0 54px;
+  padding: 5px 10px 10px 50px;
 }
 
 .authorName b {
@@ -69,12 +69,18 @@
   text-align: left;
 }
 
+.productsContainer {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 10px;
+}
+
 .views span {
-  font-weight: 100;
+  color: darkgray;
 }
 
 .views {
-  margin: 10px 0 0;
+  padding: 10px;
   font-size: 1.5rem;
-  text-align: left;
+  text-align: right;
 }

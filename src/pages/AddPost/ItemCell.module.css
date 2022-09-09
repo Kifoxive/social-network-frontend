@@ -1,0 +1,41 @@
+.itemCellContainer {
+  position: relative;
+  box-shadow: 0 0 2px 1px hsl(0, 0%, 83%);
+  padding: 2px;
+}
+.itemCellWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 132px;
+  height: 132px;
+}
+.title {
+  padding: 5px;
+  color: black;
+  background-color: rgb(246, 246, 246);
+  font-size: 1.8rem;
+  text-align: center;
+}
+.image {
+  flex: 1;
+  width: 100%;
+  background-color: gray;
+}
+.image img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.selected {
+  background-color: blue;
+}
+.button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+  background-color: transparent;
+}

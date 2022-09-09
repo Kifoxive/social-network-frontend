@@ -2,7 +2,7 @@
   display: flex;
   width: 800px;
   height: 200px;
-  margin: 20px 0;
+  /* margin: 20px 0; */
   box-shadow: 0 0 2px 1px rgb(212, 212, 212);
 }
 .itemContainer:hover .itemWrapper {
@@ -101,6 +101,13 @@
 
 .itemWrapper_full {
   padding: 10px;
+}
+
+.tittle_full {
+  padding-left: 50px;
+}
+.text_full {
+  padding-left: 50px;
 }
 
 .bottomSide {

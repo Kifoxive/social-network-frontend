@@ -4,7 +4,10 @@ import { Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown'
 import { useDispatch } from 'react-redux';
 import { fetchRemovePost } from '../../redux/slices/postsSlice';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye } from '@fortawesome/free-solid-svg-icons'
 import AuthorInfo from '../AuthorInfo/AuthorInfo';
+import Item from '../Item/Item';
 
 const Post = ({
    _id,
@@ -20,13 +23,15 @@ const Post = ({
    isLoading,
    isEditable,
    text,
+   selectedItems
 }) => {
    const dispatch = useDispatch()
+
+   const products = selectedItems.map((item) => <Item key={item._id} {...item.item} />)
 
    const onClickRemove = () => {
       dispatch(fetchRemovePost(_id))
    }
-
 
    return (
       <div className={styles.postContainer}>
@@ -38,11 +43,13 @@ const Post = ({
                   <div className={styles.title}>
                      <h2>{isFullPost ? title : <Link to={`/posts/${_id}`}>{title}</Link>}</h2>
                   </div>
-
                   {isFullPost && <div className={styles.text}><span><ReactMarkdown children={text} id={12} /></span></div>}
-                  <div className={styles.views}><span>{viewsCount}</span></div>
                </div>
             </div>
+            <div className={styles.productsContainer}>
+               {products}
+            </div>
+            <div className={styles.views}><span><FontAwesomeIcon icon={faEye} /> {viewsCount}</span></div>
          </div>
       </div >
    )

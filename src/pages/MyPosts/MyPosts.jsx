@@ -19,7 +19,7 @@ const MyPosts = () => {
       <div
          className={styles.container}>
          <div className={styles.wrapper}>
-            <div className={styles.addButton}><a href="/add-posts">add</a></div>
+            <div className={styles.addButton}><a href="/add-post">add</a></div>
             {[posts]}
          </div>
       </div>

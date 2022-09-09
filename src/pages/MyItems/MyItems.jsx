@@ -26,7 +26,7 @@ const MyItems = () => {
       <div className={styles.container}>
          <div className={styles.wrapper}>
             <div className={styles.addButton}><a href="/add-item">add</a></div>
-            {[items]}
+            <div className={styles.productsContainer}>{[items]}</div>
          </div>
       </div>
    )

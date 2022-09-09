@@ -85,14 +85,11 @@ const AddItem = () => {
             {imageUrl && <div className={styles.image}>
                <img src={`http://localhost:3001${imageUrl}`} alt="poster" />
             </div>}
-            <div className={styles.title}>
-               <input value={title} onChange={(e) => setTitle(e.target.value)} placeholder={'title of article...'}
-                  type="text" />
-            </div>
-            <InputText value={text} placeholder={'text'} onChange={(e) => setText(e.target.value)} />
-            <InputText value={tags} placeholder={'tags'} onChange={(e) => setTags(e.target.value)} />
-            <InputText value={price} placeholder={'price'} onChange={(e) => setPrice(e.target.value)} />
-            <InputText value={currency} placeholder={'currency'} onChange={(e) => setCurrency(e.target.value)} />
+            <InputText className={`${styles.title} ${styles.input}`} value={title} placeholder={'title'} onChange={(e) => setTitle(e.target.value)} />
+            <InputText className={styles.input} value={text} placeholder={'text'} onChange={(e) => setText(e.target.value)} />
+            <InputText className={styles.input} value={tags} placeholder={'tags'} onChange={(e) => setTags(e.target.value)} />
+            <InputText className={styles.input} value={price} placeholder={'price'} onChange={(e) => setPrice(e.target.value)} />
+            <InputText className={styles.input} value={currency} placeholder={'currency'} onChange={(e) => setCurrency(e.target.value)} />
             <div className={styles.btn}>
                <button onClick={onSubmit}>{isEditing ? "Update" : "Submit"}</button>
             </div>
