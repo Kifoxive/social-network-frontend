@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Avatar from '../Avatar/Avatar';
 import { fetchComments, fetchSendComment } from '../../redux/slices/commentsSlice';
 
-const WriteComment = ({ item }) => {
+const WriteComment = ({ product }) => {
    const dispatch = useDispatch()
    const userData = useSelector((state) => state.auth.data)
    const isDisabled = useSelector((state) => state.comments.isDisabled)
@@ -14,10 +14,10 @@ const WriteComment = ({ item }) => {
    const onSubmit = async () => {
       try {
          const fields = {
-            text, item
+            text, product
          }
          const result = await dispatch(fetchSendComment(fields))
-         dispatch(fetchComments(result.payload.item))
+         dispatch(fetchComments(result.payload.product))
          setText('')
       } catch (err) {
          console.warn(err)

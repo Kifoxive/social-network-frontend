@@ -1,14 +1,14 @@
 import React from 'react'
-import styles from './Item.module.css'
+import styles from './Product.module.css'
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencil, faComment } from '@fortawesome/free-solid-svg-icons'
-import AuthorInfo from '../../components/AuthorInfo/AuthorInfo';
+import AuthorInfo from '../AuthorInfo/AuthorInfo';
 import { InputButton } from '../Input/Input';
 
-const Item = ({
-   title, text, imageUrl, tags, commentsCount, createdAt, price, currency, _id, user, isFullItem
+const Product = ({
+   title, text, imageUrl, tags, commentsCount, createdAt, price, currency, _id, user, isFullProduct
 }) => {
    const userData = useSelector((state) => state.auth.data)
 
@@ -17,18 +17,18 @@ const Item = ({
       currency,
    });
    const priceText = formatter.format(price);
-   const textFormat = isFullItem ? text : (text.length > 100 ?
+   const textFormat = isFullProduct ? text : (text.length > 100 ?
       text.substring(0, 100 - 3) + "..." :
       text)
 
-   const isEditable = (userData?._id === user._id)
+   const isOwner = (userData?._id === user._id)
 
-   return isFullItem
+   return isFullProduct
       ?
-      <div className={styles.itemContainer_full}>
-         <div className={styles.image_full}><img src={`http://localhost:3001${imageUrl}`} alt="item" /></div>
-         <div className={styles.itemWrapper_full}>
-            <AuthorInfo user={user} createdAt={createdAt} isEditable={isEditable} path="items" id={_id} />
+      <div className={styles.productContainer_full}>
+         <div className={styles.image_full}>{imageUrl && <img src={`http://localhost:3001${imageUrl}`} alt="product" />}</div>
+         <div className={styles.productWrapper_full}>
+            <AuthorInfo user={user} createdAt={createdAt} isEditable={isOwner} isRemovable={false} editPath="products" id={_id} />
             <div className={`${styles.tittle_full} ${styles.title}`}>
                <h2>{title}</h2>
             </div>
@@ -52,13 +52,13 @@ const Item = ({
          </div>
       </div >
       :
-      <div className={styles.itemContainer}>
-         <div className={styles.image}><img src={`http://localhost:3001${imageUrl}`} alt="item" /></div>
-         <div className={styles.itemWrapper}>
+      <div className={styles.productContainer}>
+         <div className={styles.image}>{imageUrl && <img src={`http://localhost:3001${imageUrl}`} alt="product" />}</div>
+         <div className={styles.productWrapper}>
             <div className={styles.title}>
-               <h2><Link to={`/items/${_id}`}>{title}</Link></h2>
-               {isEditable &&
-                  <Link to={`/items/${_id}/edit`} className={styles.editLink}>
+               <h2><Link to={`/products/${_id}`}>{title}</Link></h2>
+               {isOwner &&
+                  <Link to={`/products/${_id}/edit`} className={styles.editLink}>
                      <FontAwesomeIcon icon={faPencil} />
                   </Link>}
             </div>
@@ -69,6 +69,6 @@ const Item = ({
       </div >
 }
 
-export default Item
+export default Product
 
 

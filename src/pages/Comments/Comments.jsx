@@ -24,7 +24,7 @@ const Comments = () => {
    return (
       <div className={styles.container}>
          <div className={styles.wrapper}>
-            <WriteComment item={id} />
+            <WriteComment product={id} />
             {isLoaded
                ? comments
                : <><CommentSkeleton />

@@ -8,9 +8,8 @@ import cls from 'classnames'
 
 
 const AuthorInfo = ({
-   user, createdAt, isEditable, id, path, onRemove, isRemovable, removeIsDisable
+   user, createdAt, isEditable, id, editPath, isRemovable, onRemove, removeIsDisable
 }) => {
-
 
    const getDate = (date) => {
       const dateObj = new Date(date)
@@ -28,7 +27,7 @@ const AuthorInfo = ({
             </div>
          </div>
          <div className={styles.actionsSide}>
-            {isEditable && <Link to={`/${path}/${id}/edit`} className={styles.editLink}><FontAwesomeIcon icon={faPencil} /></Link>}
+            {isEditable && <Link to={`/${editPath}/${id}/edit`} className={styles.editLink}><FontAwesomeIcon icon={faPencil} /></Link>}
             {isRemovable && <button disabled={removeIsDisable} className={cls({ [styles.buttonDisabled]: removeIsDisable }, styles.removeButton)} onClick={onRemove}><FontAwesomeIcon icon={faRemove} /></button>}
          </div>
       </div>

@@ -1,12 +1,12 @@
 import React from 'react'
-import styles from './ItemCell.module.css'
+import styles from './ProductCell.module.css'
 import cls from 'classnames'
 
-const ItemCell = ({
-   title, _id, imageUrl, toggleItemSelected, isSelected
+const ProductCell = ({
+   title, _id, imageUrl, toggleProductSelected, isSelected
 }) => {
    const onClick = () => {
-      toggleItemSelected(_id, title)
+      toggleProductSelected(_id, title)
    }
 
    return (
@@ -22,4 +22,4 @@ const ItemCell = ({
    )
 }
 
-export default ItemCell
+export default ProductCell

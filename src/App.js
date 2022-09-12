@@ -8,9 +8,9 @@ import {
   Register,
   AddPost,
   MyPosts,
-  MyItems,
-  AddItem,
-  FullItem,
+  MyProducts,
+  AddProduct,
+  FullProduct,
   Comments,
   NoPage,
 } from "./pages"
@@ -37,10 +37,10 @@ function App() {
         <Route path="/my-posts" element={<MyPosts />} />
         <Route path="/posts/:id" element={<FullPost />} />
         <Route path="/posts/:id/edit" element={<AddPost />} />
-        <Route path="/add-item" element={<AddItem />} />
-        <Route path="/my-items" element={<MyItems />} />
-        <Route path="/items/:id" element={<FullItem />} />
-        <Route path="/items/:id/edit" element={<AddItem />} />
+        <Route path="/add-product" element={<AddProduct />} />
+        <Route path="/my-products" element={<MyProducts />} />
+        <Route path="/products/:id" element={<FullProduct />} />
+        <Route path="/products/:id/edit" element={<AddProduct />} />
         <Route path="/comments/:id" element={<Comments />} />
         <Route path="*" element={<NoPage />} />
       </Routes>

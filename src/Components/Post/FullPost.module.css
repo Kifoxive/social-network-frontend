@@ -1,9 +1,9 @@
-.container {
+.fullPostContainer {
   display: flex;
   justify-content: center;
   padding-bottom: 100px;
 }
-.wrapper {
+.fullPostWrapper {
   display: flex;
   flex-flow: column nowrap;
   width: 800px;

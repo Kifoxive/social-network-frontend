@@ -1,13 +1,12 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
-import { selectIsAuth } from '../../redux/slices/authSlice'
-import { useNavigate, Navigate, useParams } from 'react-router-dom';
 import styles from './AddPost.module.css'
+import { useSelector, useDispatch } from 'react-redux'
+import { useNavigate, Navigate, useParams } from 'react-router-dom';
+import { selectIsAuth } from '../../redux/slices/authSlice'
 import { fetchAddImage, fetchOnePost, fetchSendPost, fetchUpdatePost } from '../../redux/slices/postsSlice';
-import { useDispatch } from 'react-redux';
 import { InputButton, InputText, InputTextarea } from '../../components/Input/Input';
-import { fetchMineItems } from '../../redux/slices/itemsSlice';
-import ItemCell from './ItemCell';
+import { fetchMineProducts } from '../../redux/slices/productsSlice';
+import ProductCell from './ProductCell';
 
 const AddPost = () => {
    const navigate = useNavigate()
@@ -17,35 +16,34 @@ const AddPost = () => {
    const [title, setTitle] = React.useState('')
    const [tags, setTags] = React.useState('')
    const [imageUrl, setImageUrl] = React.useState('')
-   const [availableItems, setAvailableItems] = React.useState([])
-   const [showItems, setShowItems] = React.useState(false)
-   const [selectedItems, setSelectedItems] = React.useState({})
+   const [availableProducts, setAvailableProducts] = React.useState([])
+   const [showProducts, setShowProducts] = React.useState(false)
+   const [selectedProducts, setSelectedProducts] = React.useState({})
 
    const isAuth = useSelector(selectIsAuth)
    const inputFileRef = React.useRef(null)
    const isEditing = Boolean(id)
 
    React.useEffect(() => {
-      let i = 0
       if (id) {
          dispatch(fetchOnePost(id)).then(res => {
             setTitle(res.payload.title)
             setText(res.payload.text)
             setImageUrl(res.payload.imageUrl)
             setTags(res.payload.tags.join(', '))
-            console.log(res.payload.selectedItems);
-            const newSelectedItems = {}
-            res.payload.selectedItems.forEach((item) => {
-               newSelectedItems[item.item._id] = item.title
+            console.log(res.payload.selectedProducts);
+            const newSelectedProducts = {}
+            res.payload.selectedProducts.forEach((item) => {
+               newSelectedProducts[item.product._id] = item.product.title
             })
-            setSelectedItems(newSelectedItems)
+            setSelectedProducts(newSelectedProducts)
          }).catch((e) => {
             console.warn(e)
          })
       }
    }, [id])
 
-   window.state = selectedItems
+   window.state = selectedProducts
 
    const handleChangeFile = async (event) => {
       try {
@@ -63,7 +61,7 @@ const AddPost = () => {
    const onSubmit = async () => {
       try {
          const fields = {
-            title, imageUrl, tags, text, id, selectedItems: Object.entries(selectedItems)
+            title, imageUrl, tags, text, id, selectedProducts: Object.entries(selectedProducts)
          }
          const result = isEditing ? await dispatch(fetchUpdatePost(fields)) : await dispatch(fetchSendPost(fields))
          navigate(`/posts/${result.payload._id}`)
@@ -77,20 +75,20 @@ const AddPost = () => {
 
    React.useEffect(() => {
       if (isAuth) {
-         dispatch(fetchMineItems()).then(res => {
-            setAvailableItems(res.payload.items)
+         dispatch(fetchMineProducts()).then(res => {
+            setAvailableProducts(res.payload.products)
          })
       }
    }, [isAuth])
 
-   const itemsElements = availableItems.map(elem => <ItemCell key={elem._id} {...elem} toggleItemSelected={toggleItemSelected} isSelected={(Object.keys(selectedItems).includes(elem._id))} />)
+   const productsElements = availableProducts.map(elem => <ProductCell key={elem._id} {...elem} toggleProductSelected={toggleProductSelected} isSelected={(Object.keys(selectedProducts).includes(elem._id))} />)
 
-   function toggleItemSelected(itemId, itemTitle) {
-      if (itemId in selectedItems) {
-         const { [itemId]: [deletedId], ...selectedItemNew } = selectedItems
-         setSelectedItems(selectedItemNew)
+   function toggleProductSelected(productId, productTitle) {
+      if (productId in selectedProducts) {
+         const { [productId]: [deletedId], ...selectedProductNew } = selectedProducts
+         setSelectedProducts(selectedProductNew)
       } else {
-         setSelectedItems({ [itemId]: itemTitle, ...selectedItems })
+         setSelectedProducts({ [productId]: productTitle, ...selectedProducts })
       }
    }
 
@@ -98,10 +96,10 @@ const AddPost = () => {
       return <Navigate to='/' />
    }
 
-   const getSelectedItemsTitle = (items) => {
+   const getSelectedProductsTitle = (products) => {
       const elems = []
-      for (let item in items) {
-         elems.push(<p className={styles.selectedTitle} key={item}>{items[item]}</p>)
+      for (let product in products) {
+         elems.push(<p className={styles.selectedTitle} key={product}>{products[product]}</p>)
       }
       return elems
    }
@@ -110,10 +108,10 @@ const AddPost = () => {
       <div className={styles.container}>
          <div className={styles.wrapper}>
             {
-               showItems
-                  ? <div className={styles.selectItemsContainer}>
-                     <div className={styles.selectItemsWrapper}>{itemsElements}</div>
-                     <InputButton value="back to edit" onClick={() => { setShowItems(false) }} />
+               showProducts
+                  ? <div className={styles.selectProductsContainer}>
+                     <div className={styles.selectedProductsWrapper}>{productsElements}</div>
+                     <InputButton value="back to edit" onClick={() => { setShowProducts(false) }} />
                   </div>
                   : <>
                      <div className={styles.btn}>
@@ -127,10 +125,10 @@ const AddPost = () => {
                      <InputText className={styles.input} value={tags} onChange={(e) => setTags(e.target.value)} placeholder={'tags'} />
                      <InputTextarea value={text} onChange={(e) => setText(e.target.value)} placeholder="type..." />
                      <div className={styles.selectedTitlesContainer}>
-                        <p className={styles.itemsCounter}>items number: <span>{Object.keys(selectedItems).length}</span></p>
-                        {getSelectedItemsTitle(selectedItems)}
+                        <p className={styles.productsCounter}>products number: <span>{Object.keys(selectedProducts).length}</span></p>
+                        {getSelectedProductsTitle(selectedProducts)}
                      </div>
-                     <InputButton value="select items" onClick={() => { setShowItems(true) }} />
+                     <InputButton value="select products" onClick={() => { setShowProducts(true) }} />
                      <div className={styles.btn}>
                         <button onClick={onSubmit}>{isEditing ? "Update" : "Submit"}</button>
                      </div>

@@ -15,7 +15,7 @@ const Navbar = (props) => {
                <div className={styles.dropdownContent}>
                   <Link to="/">home</Link>
                   <Link to="/my-posts">my posts</Link>
-                  <Link to="/my-items">my items</Link>
+                  <Link to="/my-products">my products</Link>
                </div>
             </div>
             <Avatar userData={props.userData} size='middle' />

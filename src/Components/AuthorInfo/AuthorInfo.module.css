@@ -54,5 +54,5 @@
 }
 .buttonDisabled,
 .buttonDisabled:hover {
-  color: gray;
+  color: lightgray;
 }

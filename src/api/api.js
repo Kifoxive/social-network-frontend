@@ -45,27 +45,27 @@ export const authApi = {
   },
 }
 
-export const itemsApi = {
-  sendItem(fields) {
-    return instance.post(`items`, fields)
+export const productsApi = {
+  sendProduct(fields) {
+    return instance.post(`products`, fields)
   },
-  getItems() {
-    return instance.get(`items`)
+  getProducts() {
+    return instance.get(`products`)
   },
   getMine() {
-    return instance.get(`items/mine`)
+    return instance.get(`products/mine`)
   },
-  getOneItem(id) {
-    return instance.get(`items/${id}`)
+  getOneProduct(id) {
+    return instance.get(`products/${id}`)
   },
-  // getItemsByTag(name) {
-  //   return instance.get(`items/`, { params: { tag: name } })
+  // getProductsByTag(name) {
+  //   return instance.get(`products/`, { params: { tag: name } })
   // },
-  updateItem(fields) {
-    return instance.patch(`items/${fields.id}`, fields)
+  updateProduct(fields) {
+    return instance.patch(`products/${fields.id}`, fields)
   },
-  removeItem(id) {
-    return instance.delete(`items/${id}`)
+  removeProduct(id) {
+    return instance.delete(`products/${id}`)
   },
 }
 
@@ -78,7 +78,7 @@ export const commentsApi = {
   },
   removeComment(params) {
     return instance.delete(`comments/${params.id}`, {
-      data: { item: params.item },
+      data: { product: params.product },
     })
   },
 }

@@ -1,13 +1,13 @@
 import React from 'react'
 import styles from './Post.module.css'
-import { Link } from 'react-router-dom';
-import ReactMarkdown from 'react-markdown'
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 import { fetchRemovePost } from '../../redux/slices/postsSlice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye } from '@fortawesome/free-solid-svg-icons'
 import AuthorInfo from '../AuthorInfo/AuthorInfo';
-import Item from '../Item/Item';
+import Product from '../Product/Product';
+import ReactMarkdown from 'react-markdown'
 
 const Post = ({
    _id,
@@ -21,16 +21,23 @@ const Post = ({
    children,
    isFullPost,
    isLoading,
-   isEditable,
    text,
-   selectedItems
+   selectedProducts,
+
 }) => {
-   const dispatch = useDispatch()
+   const dispatch = useDispatch();
+   const navigate = useNavigate()
+   const [removeIsDisable, setRemoveIsDisable] = React.useState(false)
 
-   const products = selectedItems.map((item) => <Item key={item._id} {...item.item} />)
+   const userData = useSelector((state) => state.auth.data)
+   const isOwner = (userData?._id === user._id)
 
-   const onClickRemove = () => {
-      dispatch(fetchRemovePost(_id))
+   const products = selectedProducts.map((item) => <Product key={item._id} {...item.product} isFullProduct={false} />)
+
+   const onRemove = async () => {
+      setRemoveIsDisable(true)
+      await dispatch(fetchRemovePost(_id))
+      navigate("/my-posts")
    }
 
    return (
@@ -38,7 +45,7 @@ const Post = ({
          <div className={styles.postWrapper}>
             {imageUrl && <div className={styles.image}><img src={`http://localhost:3001${imageUrl}`} alt="post" /></div>}
             <div className={styles.postContent}>
-               <AuthorInfo user={user} createdAt={createdAt} isEditable={isEditable} path="posts" id={_id} />
+               <AuthorInfo user={user} createdAt={createdAt} isEditable={isOwner} id={_id} editPath="posts" isRemovable={isOwner} onRemove={onRemove} removeIsDisable={removeIsDisable} />
                <div className={styles.content}>
                   <div className={styles.title}>
                      <h2>{isFullPost ? title : <Link to={`/posts/${_id}`}>{title}</Link>}</h2>

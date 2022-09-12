@@ -20,7 +20,7 @@ const MyPosts = () => {
          className={styles.container}>
          <div className={styles.wrapper}>
             <div className={styles.addButton}><a href="/add-post">add</a></div>
-            {[posts]}
+            <div className={styles.posts}>{posts}</div>
          </div>
       </div>
    )

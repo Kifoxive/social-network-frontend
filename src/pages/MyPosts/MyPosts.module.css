@@ -3,7 +3,15 @@
   justify-content: center;
 }
 .wrapper {
+  display: flex;
+  flex-flow: column nowrap;
   width: 800px;
+  padding-bottom: 100px;
+}
+.posts {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 30px;
 }
 
 .addButton {

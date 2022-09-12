@@ -1,4 +1,5 @@
 import React from 'react'
+import styles from './FullPost.module.css'
 import { useParams } from "react-router"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchOnePost } from "../../redux/slices/postsSlice"
@@ -15,8 +16,13 @@ const FullPost = () => {
       dispatch(fetchOnePost(id))
    }, [id])
 
-   return isLoaded ? <Post {...postData}
-      isEditable={userData?._id === postData.user._id} isFullPost={true} /> : <div>Loading</div>
+   return isLoaded ?
+
+      <div className={styles.fullPostContainer}>
+         <div className={styles.fullPostWrapper}><Post {...postData}
+            isEditable={userData?._id === postData.user._id} isFullPost={true} /></div>
+      </div>
+      : <div>Loading...</div>
 }
 
 export default FullPost

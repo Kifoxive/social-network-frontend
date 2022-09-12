@@ -1,14 +1,14 @@
 import React from 'react'
-import styles from './AddItem.module.css'
+import styles from './AddProduct.module.css'
 import { useSelector } from 'react-redux'
 import { selectIsAuth } from '../../redux/slices/authSlice'
 import { useNavigate, Navigate, useParams } from 'react-router-dom';
 import { fetchAddImage } from '../../redux/slices/postsSlice';
-import { fetchOneItem, fetchSendItem, fetchUpdateItem } from '../../redux/slices/itemsSlice'
+import { fetchOneProduct, fetchSendProduct, fetchUpdateProduct } from '../../redux/slices/productsSlice'
 import { useDispatch } from 'react-redux';
 import { InputText } from '../../components/Input/Input';
 
-const AddItem = () => {
+const AddProduct = () => {
    const navigate = useNavigate()
    const dispatch = useDispatch()
    const { id } = useParams()
@@ -26,7 +26,7 @@ const AddItem = () => {
 
    React.useEffect(() => {
       if (id) {
-         dispatch(fetchOneItem(id)).then(res => {
+         dispatch(fetchOneProduct(id)).then(res => {
             setTitle(res.payload.title)
             setText(res.payload.text)
             setImageUrl(res.payload.imageUrl)
@@ -57,9 +57,9 @@ const AddItem = () => {
          const fields = {
             title, imageUrl, tags: tags.split(',').map(item => item.trim()), text, id, price, currency
          }
-         const result = isEditing ? await dispatch(fetchUpdateItem(fields)) : await dispatch(fetchSendItem(fields))
+         const result = isEditing ? await dispatch(fetchUpdateProduct(fields)) : await dispatch(fetchSendProduct(fields))
 
-         navigate(`/items/${result.payload._id}`)
+         navigate(`/products/${result.payload._id}`)
       } catch (err) {
          console.warn(err)
       }
@@ -68,8 +68,6 @@ const AddItem = () => {
    const onClickRemoveImage = () => {
       setImageUrl('')
    }
-
-
 
    if (!window.localStorage.getItem('token') && !isAuth) {
       return <Navigate to='/' />
@@ -98,4 +96,4 @@ const AddItem = () => {
    )
 }
 
-export default AddItem
+export default AddProduct

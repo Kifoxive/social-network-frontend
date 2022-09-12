@@ -56,15 +56,15 @@
   border-radius: 5px;
   border: 2px solid gainsboro;
 }
-.itemsCounter {
+.productsCounter {
   position: relative;
   padding-right: 10px;
   font-size: 1.6rem;
 }
-.itemsCounter span {
+.productsCounter span {
   position: relative;
 }
-.itemsCounter span::after {
+.productsCounter span::after {
   content: "";
   position: absolute;
   bottom: -2px;
@@ -82,7 +82,7 @@
   font-size: 1.4rem;
 }
 
-.selectItemsWrapper {
+.selectedProductsWrapper {
   display: flex;
   flex-flow: row wrap;
   gap: 20px;
