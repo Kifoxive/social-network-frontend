@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+.wrapper {
+  width: 800px;
+  padding: 10px;
+  box-shadow: 0 0 2px 1px rgb(212, 212, 212);
+}
+
+.profileSection {
+  display: flex;
+}
+
+.profileInfo {
+  padding-left: 40px;
+  display: flex;
+  flex-flow: column nowrap;
+}
+.fullname {
+  font-size: 3rem;
+}
+.date {
+  font-size: 2rem;
+}

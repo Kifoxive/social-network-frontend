@@ -8,7 +8,7 @@ import cls from 'classnames'
 
 
 const AuthorInfo = ({
-   user, createdAt, isEditable, id, editPath, isRemovable, onRemove, removeIsDisable
+   user, createdAt, isEditable = false, id, editPath = null, isRemovable = false, onRemove = null, removeIsDisable = false
 }) => {
 
    const getDate = (date) => {
@@ -20,9 +20,13 @@ const AuthorInfo = ({
    return (
       <div className={styles.authorInfo}>
          <div className={styles.contentSide}>
-            <Avatar userData={user} size='small' />
+            <Link to={`/profile/${id}`}>
+               <Avatar userData={user} size='small' />
+            </Link>
             <div className={styles.authorPostData}>
-               <div><b className={styles.authorName}>{user.fullName}</b></div>
+               <Link to={`/profile/${id}`}>
+                  <div><b className={styles.authorName}>{user.fullName}</b></div>
+               </Link>
                <div className={styles.date}><span>{date}</span></div>
             </div>
          </div>

@@ -106,12 +106,14 @@ const postsSlice = createSlice({
     },
     // remove post
     [fetchRemovePost.pending]: (state, action) => {
-      state.allPosts.status = "loading"
+      state.myPosts.status = "loading"
     },
     [fetchRemovePost.fulfilled]: (state, action) => {
-      state.allPosts.status = "loaded"
+      state.myPosts.status = "loaded"
+
+      console.log(state.allPosts.item)
       if (action.payload.success) {
-        state.allPosts.items = state.allPosts.items.filter(
+        state.myPosts.items = state.myPosts.items.filter(
           (item) => item._id !== action.meta.arg
         )
       }

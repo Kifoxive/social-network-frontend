@@ -6,3 +6,11 @@
   width: 800px;
   text-align: center;
 }
+
+.wrapper h2 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+.wrapper big {
+  font-size: 8rem;
+}

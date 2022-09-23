@@ -58,9 +58,6 @@ export const productsApi = {
   getOneProduct(id) {
     return instance.get(`products/${id}`)
   },
-  // getProductsByTag(name) {
-  //   return instance.get(`products/`, { params: { tag: name } })
-  // },
   updateProduct(fields) {
     return instance.patch(`products/${fields.id}`, fields)
   },
@@ -80,5 +77,14 @@ export const commentsApi = {
     return instance.delete(`comments/${params.id}`, {
       data: { product: params.product },
     })
+  },
+}
+
+export const usersApi = {
+  getOneUser(id) {
+    return instance.get(`users/${id}`)
+  },
+  getByName(name) {
+    return instance.get(`users/search?name=${name}`)
   },
 }

@@ -31,7 +31,6 @@ const AddPost = () => {
             setText(res.payload.text)
             setImageUrl(res.payload.imageUrl)
             setTags(res.payload.tags.join(', '))
-            console.log(res.payload.selectedProducts);
             const newSelectedProducts = {}
             res.payload.selectedProducts.forEach((item) => {
                newSelectedProducts[item.product._id] = item.product.title
@@ -61,7 +60,7 @@ const AddPost = () => {
    const onSubmit = async () => {
       try {
          const fields = {
-            title, imageUrl, tags, text, id, selectedProducts: Object.entries(selectedProducts)
+            title, imageUrl, tags, text, id, selectedProducts: Object.keys(selectedProducts)
          }
          const result = isEditing ? await dispatch(fetchUpdatePost(fields)) : await dispatch(fetchSendPost(fields))
          navigate(`/posts/${result.payload._id}`)
@@ -90,10 +89,6 @@ const AddPost = () => {
       } else {
          setSelectedProducts({ [productId]: productTitle, ...selectedProducts })
       }
-   }
-
-   if (!window.localStorage.getItem('token') && !isAuth) {
-      return <Navigate to='/' />
    }
 
    const getSelectedProductsTitle = (products) => {

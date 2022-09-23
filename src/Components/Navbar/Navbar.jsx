@@ -16,6 +16,7 @@ const Navbar = (props) => {
                   <Link to="/">home</Link>
                   <Link to="/my-posts">my posts</Link>
                   <Link to="/my-products">my products</Link>
+                  <Link to="/users">users</Link>
                </div>
             </div>
             <Avatar userData={props.userData} size='middle' />

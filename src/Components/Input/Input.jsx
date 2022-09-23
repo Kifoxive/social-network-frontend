@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './Input.module.css'
 
 export const InputText = ({
-   onChange, value, placeholder, ...props
+   onChange, value = "", placeholder = "", ...props
 }) => {
 
    return (
@@ -14,7 +14,7 @@ export const InputText = ({
 }
 
 
-export const InputButton = ({ value, onClick, isDisabled, ...props
+export const InputButton = ({ value = "", onClick, isDisabled, ...props
 }) => {
    return (
       <div className={styles.buttonContainer}>
@@ -24,7 +24,7 @@ export const InputButton = ({ value, onClick, isDisabled, ...props
 }
 
 export const InputTextarea = ({
-   onChange, value, placeholder, ...props
+   onChange, value = "", placeholder = "", ...props
 }) => {
 
    return (

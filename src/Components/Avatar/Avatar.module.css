@@ -8,6 +8,16 @@
 }
 .avatar p {
   margin: auto;
+  color: white;
+  text-transform: uppercase;
+}
+
+.big {
+  height: 100px;
+  width: 100px;
+}
+.avatar.big p {
+  font-size: 50px;
 }
 
 .middle {
@@ -16,8 +26,6 @@
 }
 .avatar.middle p {
   font-size: 30px;
-  color: white;
-  text-transform: uppercase;
 }
 
 .small {
@@ -26,6 +34,4 @@
 }
 .avatar.small p {
   font-size: 20px;
-  color: white;
-  text-transform: uppercase;
 }

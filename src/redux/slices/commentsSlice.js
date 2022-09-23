@@ -66,9 +66,6 @@ const commentsSlice = createSlice({
         )
       }
     },
-    [fetchRemoveComment.rejected]: (state) => {
-      state.items = []
-    },
   },
 })
 

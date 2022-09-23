@@ -12,6 +12,8 @@ import {
   AddProduct,
   FullProduct,
   Comments,
+  Users,
+  Profile,
   NoPage,
 } from "./pages"
 import { useDispatch, useSelector } from "react-redux"
@@ -42,6 +44,8 @@ function App() {
         <Route path="/products/:id" element={<FullProduct />} />
         <Route path="/products/:id/edit" element={<AddProduct />} />
         <Route path="/comments/:id" element={<Comments />} />
+        <Route path="/users" element={<Users />} />
+        <Route path="/profile/:id" element={<Profile />}></Route>
         <Route path="*" element={<NoPage />} />
       </Routes>
     </div>

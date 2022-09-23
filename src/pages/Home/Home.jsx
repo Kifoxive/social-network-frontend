@@ -1,7 +1,6 @@
 import React from "react"
-import { useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { fetchPosts } from '../../redux/slices/postsSlice';
-import { useSelector } from 'react-redux';
 import Post from '../../components/Post/Post';
 import styles from './Home.module.css'
 

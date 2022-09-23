@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+.wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 800px;
+  padding: 20px;
+  box-sizing: border-box;
+  gap: 10px;
+  box-shadow: 0 0 2px 1px rgb(212, 212, 212);
+  background-color: white;
+}
+
+.search {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  font-size: 2rem;
+}

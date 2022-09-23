@@ -10,8 +10,8 @@ import { InputButton } from '../Input/Input';
 const Product = ({
    title, text, imageUrl, tags, commentsCount, createdAt, price, currency, _id, user, isFullProduct
 }) => {
-   const userData = useSelector((state) => state.auth.data)
 
+   const userData = useSelector((state) => state.auth.data)
    const formatter = new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency,
