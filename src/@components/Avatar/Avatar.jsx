@@ -5,7 +5,7 @@ import cls from 'classnames'
 const Avatar = ({ userData, size = "small" }) => {
    return <div>
       {userData.avatarUrl
-         ? <img className={cls([styles[size]], styles.avatar)} src={userData.avatarUrl} alt='avatar' />
+         ? <img className={cls([styles[size]], styles.avatar)} src={`http://localhost:3001${userData.avatarUrl}`} alt='avatar' />
          : <div className={cls([styles[size]], styles.avatar)}><p>{userData.fullName[0]}</p></div>
       }
    </div>

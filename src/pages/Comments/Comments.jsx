@@ -1,11 +1,13 @@
 import React from 'react'
 import styles from './Comments.module.css'
+import withHeaderHOC from "@components/Header/Header"
+
 import { useParams } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchComments } from '../../redux/slices/commentsSlice';
-import Comment from '../../components/Comment/Comment';
-import WriteComment from '../../components/WriteComment/WriteComment';
-import CommentSkeleton from '../../components/Comment/CommentSkeleton';
+import Comment from '@components/Comment/Comment';
+import WriteComment from '@components/WriteComment/WriteComment';
+import CommentSkeleton from '@components/Comment/CommentSkeleton';
 
 
 const Comments = () => {
@@ -34,4 +36,4 @@ const Comments = () => {
    )
 }
 
-export default Comments
+export default withHeaderHOC(Comments, "comments")

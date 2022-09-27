@@ -1,10 +1,12 @@
 import React from "react"
 import styles from './Register.module.css'
+import withHeaderHOC from "@components/Header/Header"
+
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchRegister, selectIsAuth } from '../../redux/slices/authSlice';
 import { Navigate } from 'react-router-dom'
-import { InputButton } from "../../components/Input/Input";
+import { InputButton } from "@components/Input/Input";
 
 const Register = () => {
    const isAuth = useSelector(selectIsAuth)
@@ -53,7 +55,7 @@ const Register = () => {
       </div>
 }
 
-export default Register
+export default withHeaderHOC(Register, "sign up")
 
 
 

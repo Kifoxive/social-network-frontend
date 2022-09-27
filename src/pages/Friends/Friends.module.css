@@ -1,0 +1,8 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+.wrapper {
+  width: 800px;
+  box-shadow: 0 0 2px 1px rgb(212, 212, 212);
+}

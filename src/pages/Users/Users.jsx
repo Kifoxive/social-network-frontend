@@ -1,10 +1,11 @@
 import React from 'react'
 import styles from './Users.module.css'
+import withHeaderHOC from "@components/Header/Header"
 
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUsersByName } from '../../redux/slices/usersSlice';
-import UserBlock from '../../components/UserBlock/UserBlock';
-import { InputText } from '../../components/Input/Input';
+import UserBlock from '@components/UserBlock/UserBlock';
+import { InputText } from '@components/Input/Input';
 import debounce from "lodash/debounce";
 
 const Users = () => {
@@ -37,4 +38,4 @@ const Users = () => {
    </div>)
 }
 
-export default Users
+export default withHeaderHOC(Users, "users")

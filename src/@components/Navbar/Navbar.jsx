@@ -1,15 +1,16 @@
 import React from 'react'
-import { Link } from "react-router-dom"
-import Avatar from '../Avatar/Avatar'
 import styles from './Navbar.module.css'
 
+import { Link } from "react-router-dom"
+import Avatar from '../Avatar/Avatar'
 
-const Navbar = (props) => {
-
+const Navbar = ({ isAuth, onClickLogout, userData, locationName }) => {
    return <nav className={styles.nav}>
-      {props.isAuth
+      <div className={styles.pageTitle}><h1>{locationName}</h1></div>
+      {isAuth
          ? <div>
-            <button className={styles.btn} onClick={props.onClickLogout}><p>LOG OUT</p></button>
+
+            <button className={styles.btn} onClick={onClickLogout}><p>LOG OUT</p></button>
             <div className={styles.dropdown}>
                <button className={`${styles.btn} ${styles.dropBtn}`}><p>Menu</p></button>
                <div className={styles.dropdownContent}>
@@ -17,9 +18,10 @@ const Navbar = (props) => {
                   <Link to="/my-posts">my posts</Link>
                   <Link to="/my-products">my products</Link>
                   <Link to="/users">users</Link>
+                  <Link to={`/profile/${userData._id}`}>profile</Link>
                </div>
             </div>
-            <Avatar userData={props.userData} size='middle' />
+            <Avatar userData={userData} size='middle' />
          </div>
          :
          <div>

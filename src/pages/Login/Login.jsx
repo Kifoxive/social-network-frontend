@@ -1,10 +1,12 @@
 import React from "react"
 import styles from './Login.module.css'
+import withHeaderHOC from "@components/Header/Header"
+
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchLogin, selectIsAuth } from '../../redux/slices/authSlice';
 import { Navigate } from 'react-router-dom'
-import { InputButton } from '../../components/Input/Input';
+import { InputButton } from '@components/Input/Input';
 
 const Login = () => {
    const isAuth = useSelector(selectIsAuth)
@@ -46,4 +48,4 @@ const Login = () => {
       </div>
 }
 
-export default Login
+export default withHeaderHOC(Login, "log in")

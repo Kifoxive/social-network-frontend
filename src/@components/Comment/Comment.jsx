@@ -20,7 +20,7 @@ const Comment = ({ text, user, product, createdAt, _id }) => {
 
    return (
       <div className={styles.commentContainer}>
-         <AuthorInfo user={user} createdAt={createdAt} isRemovable={isOwner} onRemove={onRemove} removeIsDisable={removeIsDisable} />
+         <AuthorInfo user={user} createdAt={createdAt} isRemovable={isOwner} onRemove={onRemove} removeIsDisable={removeIsDisable} id={user._id} />
          <div className={styles.commentContent}>
             <p>{text}</p>
          </div>

@@ -20,11 +20,11 @@ const AuthorInfo = ({
    return (
       <div className={styles.authorInfo}>
          <div className={styles.contentSide}>
-            <Link to={`/profile/${id}`}>
+            <Link to={`/profile/${user._id}`}>
                <Avatar userData={user} size='small' />
             </Link>
             <div className={styles.authorPostData}>
-               <Link to={`/profile/${id}`}>
+               <Link to={`/profile/${user._id}`}>
                   <div><b className={styles.authorName}>{user.fullName}</b></div>
                </Link>
                <div className={styles.date}><span>{date}</span></div>

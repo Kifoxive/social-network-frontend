@@ -15,6 +15,13 @@ export const fetchOneProduct = createAsyncThunk(
     return data
   }
 )
+export const fetchUserProducts = createAsyncThunk(
+  "posts/fetchUserProducts",
+  async (id) => {
+    const { data } = await productsApi.getProductsByUser(id)
+    return data
+  }
+)
 export const fetchRemoveProduct = createAsyncThunk(
   "products/fetchRemoveProduct",
   async (id) => {
@@ -38,12 +45,12 @@ export const fetchUpdateProduct = createAsyncThunk(
 )
 
 const initialState = {
-  myProducts: {
-    items: [],
+  oneProduct: {
+    item: {},
     status: "loading",
   },
-  currentProduct: {
-    item: {},
+  allProducts: {
+    items: [],
     status: "loading",
   },
 }
@@ -55,30 +62,43 @@ const productsSlice = createSlice({
   extraReducers: {
     // get my products
     [fetchMineProducts.pending]: (state) => {
-      state.myProducts.status = "loading"
-      state.myProducts.items = []
+      state.allProducts.status = "loading"
+      state.allProducts.items = []
     },
     [fetchMineProducts.fulfilled]: (state, action) => {
-      state.myProducts.status = "loaded"
-      state.myProducts.items = action.payload.products
+      state.allProducts.status = "loaded"
+      state.allProducts.items = action.payload.products
     },
     [fetchMineProducts.rejected]: (state) => {
-      state.myProducts.status = "error"
-      state.myProducts.items = []
+      state.allProducts.status = "error"
+      state.allProducts.items = []
     },
-
     // get one product
     [fetchOneProduct.pending]: (state) => {
-      state.currentProduct.status = "loading"
-      state.currentProduct.item = {}
+      state.oneProduct.status = "loading"
+      state.oneProduct.item = {}
     },
     [fetchOneProduct.fulfilled]: (state, action) => {
-      state.currentProduct.status = "loaded"
-      state.currentProduct.item = action.payload
+      state.oneProduct.status = "loaded"
+      state.oneProduct.item = action.payload.product
     },
     [fetchOneProduct.rejected]: (state) => {
-      state.currentProduct.status = "error"
-      state.currentProduct.item = {}
+      state.oneProduct.status = "error"
+      state.oneProduct.item = {}
+    },
+    // get products by user
+    [fetchUserProducts.pending]: (state) => {
+      state.allProducts.status = "loading"
+      state.allProducts.items = []
+    },
+    [fetchUserProducts.fulfilled]: (state, action) => {
+      console.log(action.payload)
+      state.allProducts.status = "loaded"
+      state.allProducts.items = action.payload.products
+    },
+    [fetchUserProducts.rejected]: (state) => {
+      state.allProducts.status = "error"
+      state.allProducts.items = []
     },
   },
 })

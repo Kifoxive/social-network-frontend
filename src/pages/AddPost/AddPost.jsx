@@ -1,10 +1,12 @@
 import React from 'react'
 import styles from './AddPost.module.css'
+import withHeaderHOC from "@components/Header/Header"
+
 import { useSelector, useDispatch } from 'react-redux'
-import { useNavigate, Navigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { selectIsAuth } from '../../redux/slices/authSlice'
 import { fetchAddImage, fetchOnePost, fetchSendPost, fetchUpdatePost } from '../../redux/slices/postsSlice';
-import { InputButton, InputText, InputTextarea } from '../../components/Input/Input';
+import { InputButton, InputText, InputTextarea } from '@components/Input/Input';
 import { fetchMineProducts } from '../../redux/slices/productsSlice';
 import ProductCell from './ProductCell';
 
@@ -27,10 +29,10 @@ const AddPost = () => {
    React.useEffect(() => {
       if (id) {
          dispatch(fetchOnePost(id)).then(res => {
-            setTitle(res.payload.title)
-            setText(res.payload.text)
-            setImageUrl(res.payload.imageUrl)
-            setTags(res.payload.tags.join(', '))
+            setTitle(res.payload.post.title)
+            setText(res.payload.post.text)
+            setImageUrl(res.payload.post.imageUrl)
+            setTags(res.payload.post.tags.join(', '))
             const newSelectedProducts = {}
             res.payload.selectedProducts.forEach((item) => {
                newSelectedProducts[item.product._id] = item.product.title
@@ -134,4 +136,4 @@ const AddPost = () => {
    )
 }
 
-export default AddPost  
+export default withHeaderHOC(AddPost, "add post")  

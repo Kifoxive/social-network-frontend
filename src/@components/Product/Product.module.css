@@ -28,7 +28,7 @@
   flex-flow: column nowrap;
   height: 100%;
   overflow: hidden;
-  padding: 0 20px 10px;
+  padding: 0 10px 10px 20px;
   background-color: white;
 }
 
@@ -55,10 +55,13 @@
   transition: 0.5s;
 }
 .editLink svg {
+  font-size: 1.6rem;
   transition: 0.5s;
+  color: gray;
 }
 .editLink:hover svg {
   transform: rotateY(180deg);
+  color: black;
 }
 
 .text {

@@ -8,6 +8,14 @@
   width: 800px;
   padding-bottom: 100px;
 }
+.noPosts {
+  box-shadow: 0 0 2px 1px rgb(212, 212, 212);
+  background-color: white;
+  padding: 20px;
+  text-align: center;
+  font-size: 2rem;
+}
+
 .posts {
   display: flex;
   flex-flow: column nowrap;

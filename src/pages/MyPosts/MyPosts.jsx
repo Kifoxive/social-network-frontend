@@ -1,8 +1,10 @@
 import React from 'react'
 import styles from './MyPosts.module.css'
+import withHeaderHOC from "@components/Header/Header"
+
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchMinePosts } from '../../redux/slices/postsSlice';
-import Post from '../../components/Post/Post';
+import Post from '@components/Post/Post';
 
 const MyPosts = () => {
    const dispatch = useDispatch()
@@ -20,10 +22,14 @@ const MyPosts = () => {
          className={styles.container}>
          <div className={styles.wrapper}>
             <div className={styles.addButton}><a href="/add-post">add</a></div>
-            <div className={styles.posts}>{posts}</div>
+            <div className={styles.posts}>
+               {posts.length === 0
+                  ? <div className={styles.noPosts}>Let's create a new post!</div> :
+                  [posts]}
+            </div>
          </div>
       </div>
    )
 }
 
-export default MyPosts
+export default withHeaderHOC(MyPosts, "my posts")

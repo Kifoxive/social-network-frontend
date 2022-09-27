@@ -14,10 +14,11 @@
 
 .btn button {
   margin: 10px;
-  font-size: 2rem;
   padding: 0.5rem;
   border-radius: 0.5rem;
   background-color: lightgrey;
+  text-transform: lowercase;
+  font-size: 2rem;
 }
 
 .title input {

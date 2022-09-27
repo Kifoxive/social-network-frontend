@@ -8,11 +8,17 @@ export const fetchOneUser = createAsyncThunk(
     return data
   }
 )
-
 export const fetchUsersByName = createAsyncThunk(
   "users/fetchUsersByName",
   async (name) => {
     const { data } = await usersApi.getByName(name)
+    return data
+  }
+)
+export const fetchUpdateUser = createAsyncThunk(
+  "users/fetchUpdateUser",
+  async (fields) => {
+    const { data } = await usersApi.updateProfile(fields)
     return data
   }
 )

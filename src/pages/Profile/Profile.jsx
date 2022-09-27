@@ -1,17 +1,21 @@
 import React from 'react'
 import styles from './Profile.module.css'
+import withHeaderHOC from "@components/Header/Header"
 
 import { useParams } from 'react-router';
-import { fetchOneUser } from '../../redux/slices/usersSlice';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import Avatar from '../../components/Avatar/Avatar';
+import { fetchOneUser } from '../../redux/slices/usersSlice';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPencil, faRemove } from '@fortawesome/free-solid-svg-icons'
+import Avatar from '@components/Avatar/Avatar';
 
 const Profile = () => {
    const { id } = useParams()
    const dispatch = useDispatch()
    const userData = useSelector((state) => state.users.oneUser.item)
+   const myData = useSelector(state => state.auth.data)
    const isLoaded = useSelector(state => state.users.oneUser.status === "loaded")
-
    React.useEffect(() => {
       dispatch(fetchOneUser(id))
    }, [id])
@@ -21,6 +25,7 @@ const Profile = () => {
       return `${dateObj.getDate()}-${dateObj.getMonth() + 1}-${dateObj.getFullYear()}`
    }
    const date = getDate(userData.createdAt)
+   const isEditable = (myData?._id === userData._id)
 
    return (
       <div
@@ -29,10 +34,33 @@ const Profile = () => {
             {
                isLoaded
                   ? <div className={styles.profileSection}>
-                     <Avatar userData={userData} size="big" />
+                     {isEditable && <Link to={'/profile/edit'} className={styles.editLink}><FontAwesomeIcon icon={faPencil} /></Link>}
+                     <div className={styles.avatar}>
+                        <Avatar userData={userData} size="big" />
+                     </div>
                      <div className={styles.profileInfo}>
                         <div className={styles.fullname}>
                            {userData.fullName}
+                        </div>
+                        <div className={styles.itemsInfo}>
+                           <div className={styles.postsInfo}>
+                              <Link to={`/profile/${id}/posts`}>
+                                 <p>posts: {userData.postsCount}</p>
+                              </Link>
+                           </div>
+                           <div className={styles.productsInfo}>
+                              <Link to={`/profile/${id}/products`}>
+                                 <p>products: {userData.productsCount}</p>
+                              </Link>
+                           </div>
+                           <div className={styles.friendsInfo}>
+                              <Link to={`/profile/${id}/friends`}>
+                                 <p>friends: {userData.friendsCount || 0}</p>
+                              </Link>
+                           </div>
+                        </div>
+                        <div className={styles.aboutMe}>
+                           {userData.aboutMe}
                         </div>
                         <div className={styles.date}>
                            <span>joined  {date}</span>
@@ -46,4 +74,4 @@ const Profile = () => {
    )
 }
 
-export default Profile
+export default withHeaderHOC(Profile, "profile")

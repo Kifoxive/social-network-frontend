@@ -1,7 +1,7 @@
 .avatar {
   display: flex;
   box-sizing: border-box;
-  border-radius: 10px;
+  border-radius: 25%;
   border: 2px solid rgb(39, 39, 39);
   background-color: gray;
   padding: 0;

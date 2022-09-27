@@ -30,6 +30,13 @@ export const fetchOnePost = createAsyncThunk(
     return data
   }
 )
+export const fetchUserPosts = createAsyncThunk(
+  "posts/fetchUserPosts",
+  async (id) => {
+    const { data } = await postsApi.getPostsByUser(id)
+    return data
+  }
+)
 export const fetchRemovePost = createAsyncThunk(
   "posts/fetchRemovePosts",
   async (id) => {
@@ -72,7 +79,7 @@ const postsSlice = createSlice({
     },
     [fetchPosts.fulfilled]: (state, action) => {
       state.allPosts.status = "loaded"
-      state.allPosts.items = action.payload
+      state.allPosts.items = action.payload.posts
     },
     [fetchPosts.rejected]: (state) => {
       state.allPosts.status = "error"
@@ -85,24 +92,37 @@ const postsSlice = createSlice({
     },
     [fetchMinePosts.fulfilled]: (state, action) => {
       state.myPosts.status = "loaded"
-      state.myPosts.items = action.payload
+      state.myPosts.items = action.payload.posts
     },
     [fetchMinePosts.rejected]: (state) => {
       state.myPosts.status = "error"
       state.myPosts.items = []
     },
-    // get post
+    // get one post
     [fetchOnePost.pending]: (state) => {
       state.onePost.status = "loading"
       state.onePost.item = {}
     },
     [fetchOnePost.fulfilled]: (state, action) => {
       state.onePost.status = "loaded"
-      state.onePost.item = action.payload
+      state.onePost.item = action.payload.post
     },
     [fetchOnePost.rejected]: (state) => {
       state.onePost.status = "error"
       state.onePost.item = {}
+    },
+    // get posts by user
+    [fetchUserPosts.pending]: (state) => {
+      state.allPosts.status = "loading"
+      state.allPosts.items = []
+    },
+    [fetchUserPosts.fulfilled]: (state, action) => {
+      state.allPosts.status = "loaded"
+      state.allPosts.items = action.payload.posts
+    },
+    [fetchUserPosts.rejected]: (state) => {
+      state.allPosts.status = "error"
+      state.allPosts.items = []
     },
     // remove post
     [fetchRemovePost.pending]: (state, action) => {
@@ -110,8 +130,6 @@ const postsSlice = createSlice({
     },
     [fetchRemovePost.fulfilled]: (state, action) => {
       state.myPosts.status = "loaded"
-
-      console.log(state.allPosts.item)
       if (action.payload.success) {
         state.myPosts.items = state.myPosts.items.filter(
           (item) => item._id !== action.meta.arg

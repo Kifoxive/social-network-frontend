@@ -25,6 +25,9 @@ export const postsApi = {
   getOnePost(id) {
     return instance.get(`posts/${id}`)
   },
+  getPostsByUser(id) {
+    return instance.get(`users/${id}/posts`)
+  },
   removePost(id) {
     return instance.delete(`posts/${id}`)
   },
@@ -58,6 +61,9 @@ export const productsApi = {
   getOneProduct(id) {
     return instance.get(`products/${id}`)
   },
+  getProductsByUser(id) {
+    return instance.get(`users/${id}/products`)
+  },
   updateProduct(fields) {
     return instance.patch(`products/${fields.id}`, fields)
   },
@@ -86,5 +92,11 @@ export const usersApi = {
   },
   getByName(name) {
     return instance.get(`users/search?name=${name}`)
+  },
+  getFriends(id) {
+    return instance.get(`users/${id}/friends`)
+  },
+  updateProfile(fields) {
+    return instance.patch(`users/update`, fields)
   },
 }

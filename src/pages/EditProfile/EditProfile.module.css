@@ -1,15 +1,21 @@
 .container {
   display: flex;
   justify-content: center;
-  padding-bottom: 100px;
 }
-
 .wrapper {
   width: 800px;
   text-align: center;
   padding: 20px;
   box-shadow: 0 0 2px 1px rgb(212, 212, 212);
   background-color: white;
+}
+.content {
+  display: flex;
+  padding-top: 10px;
+}
+.inputs {
+  display: block;
+  flex: 2;
 }
 
 .btn button {
@@ -27,8 +33,10 @@
 }
 
 .image {
-  width: 100%;
-  padding: 10px 0;
+  flex: 1;
+  margin-right: 20px;
+  overflow: hidden;
+  border-radius: 50px;
 }
 
 .image img {
@@ -45,5 +53,5 @@
 }
 
 .input {
-  width: 50%;
+  width: 100%;
 }

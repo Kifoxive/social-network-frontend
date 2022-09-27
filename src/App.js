@@ -4,7 +4,6 @@ import { Routes, Route } from "react-router-dom"
 import {
   Home,
   Login,
-  Header,
   Register,
   AddPost,
   MyPosts,
@@ -14,11 +13,14 @@ import {
   Comments,
   Users,
   Profile,
+  Posts,
+  Products,
+  EditProfile,
   NoPage,
 } from "./pages"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchAuthMe, selectIsAuth } from "./redux/slices/authSlice"
-import FullPost from "./components/Post/FullPost"
+import FullPost from "@components/Post/FullPost"
 
 function App() {
   const dispatch = useDispatch()
@@ -30,7 +32,6 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
@@ -46,6 +47,9 @@ function App() {
         <Route path="/comments/:id" element={<Comments />} />
         <Route path="/users" element={<Users />} />
         <Route path="/profile/:id" element={<Profile />}></Route>
+        <Route path="/profile/:id/posts" element={<Posts />}></Route>
+        <Route path="/profile/:id/products" element={<Products />}></Route>
+        <Route path="/profile/edit" element={<EditProfile />}></Route>
         <Route path="*" element={<NoPage />} />
       </Routes>
     </div>

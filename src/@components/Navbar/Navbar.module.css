@@ -1,7 +1,21 @@
 .nav {
-  text-align: end;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 20px;
   margin-bottom: 30px;
+}
+.pageTitle {
+  position: relative;
+  font-size: 3rem;
+}
+.pageTitle::after {
+  content: "";
+  position: absolute;
+  top: 110%;
+  height: 3px;
+  width: 100%;
+  background-color: gray;
 }
 
 .nav > div {

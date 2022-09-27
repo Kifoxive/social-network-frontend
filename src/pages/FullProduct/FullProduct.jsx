@@ -1,18 +1,20 @@
 import React from "react"
 import styles from "./FullProduct.module.css"
+import withHeaderHOC from "@components/Header/Header"
+
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from 'react-router';
 import { useNavigate } from 'react-router-dom';
 import { fetchOneProduct, fetchRemoveProduct } from "../../redux/slices/productsSlice";
-import Product from "../../components/Product/Product";
+import Product from "@components/Product/Product";
 
 
 const FullProduct = () => {
    const dispatch = useDispatch()
    const navigate = useNavigate()
    const { id } = useParams()
-   const productData = useSelector((state) => state.products.currentProduct.item)
-   const isLoaded = useSelector(state => state.products.currentProduct.status === 'loaded')
+   const productData = useSelector((state) => state.products.oneProduct.item)
+   const isLoaded = useSelector(state => state.products.oneProduct.status === 'loaded')
    const userData = useSelector((state) => state.auth.data)
    const isOwner = (userData?._id === productData?.user?._id)
 
@@ -35,4 +37,4 @@ const FullProduct = () => {
    )
 }
 
-export default FullProduct
+export default withHeaderHOC(FullProduct, "product")

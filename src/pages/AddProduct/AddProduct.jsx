@@ -1,12 +1,14 @@
 import React from 'react'
 import styles from './AddProduct.module.css'
+import withHeaderHOC from "@components/Header/Header"
+
 import { useSelector } from 'react-redux'
 import { selectIsAuth } from '../../redux/slices/authSlice'
 import { useNavigate, Navigate, useParams } from 'react-router-dom';
 import { fetchAddImage } from '../../redux/slices/postsSlice';
 import { fetchOneProduct, fetchSendProduct, fetchUpdateProduct } from '../../redux/slices/productsSlice'
 import { useDispatch } from 'react-redux';
-import { InputText } from '../../components/Input/Input';
+import { InputText } from '@components/Input/Input';
 
 const AddProduct = () => {
    const navigate = useNavigate()
@@ -27,11 +29,11 @@ const AddProduct = () => {
    React.useEffect(() => {
       if (id) {
          dispatch(fetchOneProduct(id)).then(res => {
-            setTitle(res.payload.title)
-            setText(res.payload.text)
-            setImageUrl(res.payload.imageUrl)
-            setTags(res.payload.tags.join(', '))
-            setPrice(res.payload.price)
+            setTitle(res.payload.product.title)
+            setText(res.payload.product.text)
+            setImageUrl(res.payload.product.imageUrl)
+            setTags(res.payload.product.tags.join(', '))
+            setPrice(res.payload.product.price)
             setCurrency(res.payload.currency)
          }).catch((e) => {
             console.warn(e)
@@ -79,7 +81,8 @@ const AddProduct = () => {
             <div className={styles.btn}>
                <button onClick={() => inputFileRef.current.click()}>Add preview</button>
                {imageUrl && <button onClick={onClickRemoveImage}>Remove preview</button>}
-               <input onChange={handleChangeFile} ref={inputFileRef} type="file" hidden /></div>
+               <input onChange={handleChangeFile} ref={inputFileRef} type="file" hidden />
+            </div>
             {imageUrl && <div className={styles.image}>
                <img src={`http://localhost:3001${imageUrl}`} alt="poster" />
             </div>}
@@ -96,4 +99,4 @@ const AddProduct = () => {
    )
 }
 
-export default AddProduct
+export default withHeaderHOC(AddProduct, "add product")
