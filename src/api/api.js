@@ -44,7 +44,13 @@ export const authApi = {
     return instance.post(`auth/login`, params)
   },
   me() {
-    return instance.get("auth/me")
+    return instance.get(`auth/me`)
+  },
+  updateProfile(fields) {
+    return instance.patch(`auth/update`, fields)
+  },
+  changePassword(params) {
+    return instance.patch(`auth/change-password`, params)
   },
 }
 
@@ -95,8 +101,5 @@ export const usersApi = {
   },
   getFriends(id) {
     return instance.get(`users/${id}/friends`)
-  },
-  updateProfile(fields) {
-    return instance.patch(`users/update`, fields)
   },
 }

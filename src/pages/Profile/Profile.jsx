@@ -9,6 +9,7 @@ import { fetchOneUser } from '../../redux/slices/usersSlice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencil, faRemove } from '@fortawesome/free-solid-svg-icons'
 import Avatar from '@components/Avatar/Avatar';
+import { useTranslation } from "react-i18next"
 
 const Profile = () => {
    const { id } = useParams()
@@ -16,6 +17,8 @@ const Profile = () => {
    const userData = useSelector((state) => state.users.oneUser.item)
    const myData = useSelector(state => state.auth.data)
    const isLoaded = useSelector(state => state.users.oneUser.status === "loaded")
+   const { t } = useTranslation()
+
    React.useEffect(() => {
       dispatch(fetchOneUser(id))
    }, [id])
@@ -45,17 +48,17 @@ const Profile = () => {
                         <div className={styles.itemsInfo}>
                            <div className={styles.postsInfo}>
                               <Link to={`/profile/${id}/posts`}>
-                                 <p>posts: {userData.postsCount}</p>
+                                 <p>{t("Profile.posts")}: {userData.postsCount}</p>
                               </Link>
                            </div>
                            <div className={styles.productsInfo}>
                               <Link to={`/profile/${id}/products`}>
-                                 <p>products: {userData.productsCount}</p>
+                                 <p>{t("Profile.products")}: {userData.productsCount}</p>
                               </Link>
                            </div>
                            <div className={styles.friendsInfo}>
                               <Link to={`/profile/${id}/friends`}>
-                                 <p>friends: {userData.friendsCount || 0}</p>
+                                 <p>{t("Profile.friends")}: {userData.friendsCount || 0}</p>
                               </Link>
                            </div>
                         </div>
@@ -63,7 +66,7 @@ const Profile = () => {
                            {userData.aboutMe}
                         </div>
                         <div className={styles.date}>
-                           <span>joined  {date}</span>
+                           <span>{t("Profile.joined")}  {date}</span>
                         </div>
                      </div>
                   </div>

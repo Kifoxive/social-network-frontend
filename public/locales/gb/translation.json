@@ -1,0 +1,91 @@
+{
+   "Navbar": {
+      "login": "LOG IN",
+      "signup": "SIGN UP",
+      "logout": "LOG OUT",
+      "menu": "Menu",
+      "menu-list": {
+         "home": "home",
+         "my_posts": "my posts",
+         "my_products": "my prodcuts",
+         "users": "users",
+         "profile": "profile"
+      }
+   },
+   "Profile": {
+      "posts": "posts",
+      "products": "products",
+      "friends": "friends",
+      "joined": "joined"
+   },
+   "AddPost": {
+      "products_number": "products number",
+      "select_products": "select products"
+   },
+   "AddProduct": {
+      "price": "price",
+      "currency": "currency"
+   },
+   "EditProfile": {
+      "add_avatar": "add avatar",
+      "remove_avatar": "remove avatar",
+      "basic": "basic",
+      "change_language": "change language",
+      "current_password": "current password",
+      "new_password": "new password",
+      "repeat_new_password": "repeat new password",
+      "update_info": "update info",
+      "update_password": "update password",
+      "change_password": "change password"
+   },
+   "FullProduct": {
+      "remove_product": "delete product"
+   },
+   "MyPosts": {
+      "create_new": "Let's create a new post!"
+   },
+   "MyProducts": {
+      "create_new": "Let's create a new product!"
+   },
+   "Posts": {
+      "no_posts": "The user have no posts"
+   },
+   "Products": {
+      "no_products": "The user have no products"
+   },
+   "Users": {
+      "search": "search",
+      "user_name": "username..."
+   },
+   "Login": {
+      "login": "Log in",
+      "login_button": "log in"
+   },
+   "Register": {
+      "register": "Register",
+      "register_button": "sign up"
+   },
+   "NoPage": {
+      "not_found": "Page was not found"
+   },
+   "basics": {
+      "add_preview": "Add preview",
+      "remove_preview": "Remove preview",
+      "submit": "Submit",
+      "update": "Update",
+      "enter_username": "Enter the fullname",
+      "enter_email": "Enter the email",
+      "enter_password": "Enter the password"
+   },
+   "placeholders": {
+      "title": "title",
+      "tags": "tags",
+      "description": "description",
+      "your_name": "your name",
+      "your_email": "your email",
+      "tell_about": "tell about yourself",
+      "username": "username",
+      "email": "email",
+      "password": "password"
+   }
+}

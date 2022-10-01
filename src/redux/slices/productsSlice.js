@@ -92,7 +92,6 @@ const productsSlice = createSlice({
       state.allProducts.items = []
     },
     [fetchUserProducts.fulfilled]: (state, action) => {
-      console.log(action.payload)
       state.allProducts.status = "loaded"
       state.allProducts.items = action.payload.products
     },

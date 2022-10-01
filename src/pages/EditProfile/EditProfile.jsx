@@ -4,11 +4,12 @@ import withHeaderHOC from "@components/Header/Header"
 
 import { useNavigate, Navigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { InputText } from '@components/Input/Input';
-import { selectIsAuth } from '../../redux/slices/authSlice';
-import { fetchUpdateUser } from '../../redux/slices/usersSlice';
+import { fetchUpdatePassword, selectIsAuth } from '../../redux/slices/authSlice';
+import { fetchUpdateUser } from '../../redux/slices/authSlice';
 import { fetchAddImage } from '../../redux/slices/postsSlice';
-
+import { useTranslation } from "react-i18next"
+import { InputText } from '@components/Input/Input';
+import LanguageSwitcher from './LanguageSwitcher';
 
 
 
@@ -19,12 +20,16 @@ const EditProfile = () => {
    const inputFileRef = React.useRef()
    const isAuth = useSelector(selectIsAuth)
    const myData = useSelector((state) => state.auth.data)
+   const { t } = useTranslation()
 
    const [fullName, setFullName] = React.useState('')
    const [email, setEmail] = React.useState('')
    const [aboutMe, setAboutMe] = React.useState('')
    const [avatarUrl, setImageUrl] = React.useState('')
 
+   const [password, setPassword] = React.useState('');
+   const [newPassword1, setNewPassword1] = React.useState('')
+   const [newPassword2, setNewPassword2] = React.useState('')
 
    const handleChangeFile = async (event) => {
       try {
@@ -45,6 +50,11 @@ const EditProfile = () => {
       }
       const result = await dispatch(fetchUpdateUser(fields))
       navigate(`/profile/${result.payload._id}`)
+   }
+
+   const onPasswordChange = async () => {
+      const params = { password, newPassword1, newPassword2 }
+      const result = await dispatch(fetchUpdatePassword(params))
    }
 
    React.useEffect(() => {
@@ -68,8 +78,8 @@ const EditProfile = () => {
       <div className={styles.container}>
          <div className={styles.wrapper}>
             <div className={styles.btn}>
-               <button onClick={() => inputFileRef.current.click()}>Add avatar</button>
-               {avatarUrl && <button onClick={onClickRemoveImage}>Remove preview</button>}
+               <button onClick={() => inputFileRef.current.click()}>{t("EditProfile.add_avatar")}</button>
+               {avatarUrl && <button onClick={onClickRemoveImage}>{t("EditProfile.remove_avatar")}</button>}
                <input onChange={handleChangeFile} ref={inputFileRef} type="file" hidden />
             </div>
 
@@ -78,17 +88,56 @@ const EditProfile = () => {
                   <img src={`http://localhost:3001${avatarUrl}`} alt="avatar" />
                </div>}
                <div className={styles.inputs}>
-                  <InputText className={styles.input} value={fullName} placeholder="your name" onChange={(e) => setFullName(e.target.value)} />
-                  <InputText className={styles.input} value={email} placeholder="your email" onChange={(e) => setEmail(e.target.value)} />
-                  <InputText className={styles.input} value={aboutMe} placeholder="tell abour yourself" onChange={(e) => setAboutMe(e.target.value)} />
+                  <div>
+                     <div className={styles.formName}><h2>{t("EditProfile.basic")}</h2></div>
+                     <InputText className={styles.input} value={fullName} placeholder={t("placeholders.your_name")} onChange={(e) => setFullName(e.target.value)} />
+                     <InputText className={styles.input} value={email} placeholder={t("placeholders.your_email")} onChange={(e) => setEmail(e.target.value)} />
+                     <InputText className={styles.input} value={aboutMe} placeholder={t("placeholders.tell_about")} onChange={(e) => setAboutMe(e.target.value)} />
+
+
+                     {/* <div className={styles.lang_menu}>
+                        <div className={styles.selectLanguage__title}>  {t("EditProfile.change_language")}</div>
+                        <div className={styles.selected_lang}>
+                           English
+                        </div>
+                        <ul>
+                           <li>
+                              <img src="https://www.countryflagicons.com/FLAT/32/GB.png" alt="en" />
+                              <button onClick={() => changeLanguage("en")} className={styles.en}>English</button>
+                           </li>
+                           <li>
+                              <img src="https://www.countryflagicons.com/FLAT/32/CZ.png" alt="en" />
+                              <button onClick={() => changeLanguage("cz")} className={styles.cz}>Czech</button>
+                           </li>
+                           <li>
+                              <img src="https://www.countryflagicons.com/FLAT/32/UA.png" alt="en" />
+                              <button onClick={() => changeLanguage("ua")} className={styles.ua}>Ukrainian</button>
+                           </li>
+                        </ul> */}
+
+                     <LanguageSwitcher />
+
+                     <div className={styles.sendButtonContainer}>
+                        <div className={styles.btn}>
+                           <button onClick={onSubmit}>{t("EditProfile.update_info")}</button>
+                        </div>
+                     </div>
+                  </div>
+                  <div>
+                     <div className={styles.formName}><h2>{t("EditProfile.change_password")}</h2></div>
+                     <InputText className={styles.input} value={password} placeholder={t("EditProfile.current_password")} onChange={(e) => setPassword(e.target.value)} type={'password'} />
+                     <InputText className={styles.input} value={newPassword1} placeholder={t("EditProfile.new_password")} onChange={(e) => setNewPassword1(e.target.value)} type={'password'} />
+                     <InputText className={styles.input} value={newPassword2} placeholder={t("EditProfile.repeat_new_password")} onChange={(e) => setNewPassword2(e.target.value)} type={'password'} />
+                     <div className={styles.sendButtonContainer}>
+                        <div className={styles.btn}>
+                           <button onClick={onPasswordChange}>{t("EditProfile.update_password")}</button>
+                        </div>
+                     </div>
+                  </div>
                </div>
             </div>
-
-            <div className={styles.btn}>
-               <button onClick={onSubmit}>Update</button>
-            </div>
          </div>
-      </div>
+      </div >
    )
 }
 

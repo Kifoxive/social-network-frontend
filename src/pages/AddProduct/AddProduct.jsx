@@ -8,6 +8,7 @@ import { useNavigate, Navigate, useParams } from 'react-router-dom';
 import { fetchAddImage } from '../../redux/slices/postsSlice';
 import { fetchOneProduct, fetchSendProduct, fetchUpdateProduct } from '../../redux/slices/productsSlice'
 import { useDispatch } from 'react-redux';
+import { useTranslation } from "react-i18next"
 import { InputText } from '@components/Input/Input';
 
 const AddProduct = () => {
@@ -23,6 +24,7 @@ const AddProduct = () => {
    const [price, setPrice] = React.useState('')
    const [currency, setCurrency] = React.useState('')
    const inputFileRef = React.useRef(null)
+   const { t } = useTranslation()
 
    const isEditing = Boolean(id)
 
@@ -34,7 +36,7 @@ const AddProduct = () => {
             setImageUrl(res.payload.product.imageUrl)
             setTags(res.payload.product.tags.join(', '))
             setPrice(res.payload.product.price)
-            setCurrency(res.payload.currency)
+            setCurrency(res.payload.product.currency)
          }).catch((e) => {
             console.warn(e)
          })
@@ -79,20 +81,20 @@ const AddProduct = () => {
       <div className={styles.container}>
          <div className={styles.wrapper}>
             <div className={styles.btn}>
-               <button onClick={() => inputFileRef.current.click()}>Add preview</button>
-               {imageUrl && <button onClick={onClickRemoveImage}>Remove preview</button>}
+               <button onClick={() => inputFileRef.current.click()}>{t("basics.add_preview")}</button>
+               {imageUrl && <button onClick={onClickRemoveImage}>{t("basics.remove_preview")}</button>}
                <input onChange={handleChangeFile} ref={inputFileRef} type="file" hidden />
             </div>
             {imageUrl && <div className={styles.image}>
                <img src={`http://localhost:3001${imageUrl}`} alt="poster" />
             </div>}
-            <InputText className={`${styles.title} ${styles.input}`} value={title} placeholder={'title'} onChange={(e) => setTitle(e.target.value)} />
-            <InputText className={styles.input} value={text} placeholder={'text'} onChange={(e) => setText(e.target.value)} />
-            <InputText className={styles.input} value={tags} placeholder={'tags'} onChange={(e) => setTags(e.target.value)} />
-            <InputText className={styles.input} value={price} placeholder={'price'} onChange={(e) => setPrice(e.target.value)} />
-            <InputText className={styles.input} value={currency} placeholder={'currency'} onChange={(e) => setCurrency(e.target.value)} />
+            <InputText className={`${styles.title} ${styles.input}`} value={title} placeholder={t("placeholders.title")} onChange={(e) => setTitle(e.target.value)} />
+            <InputText className={styles.input} value={text} placeholder={t("placeholders.description")} onChange={(e) => setText(e.target.value)} />
+            <InputText className={styles.input} value={tags} placeholder={t("placeholders.tags")} onChange={(e) => setTags(e.target.value)} />
+            <InputText className={styles.input} value={price} placeholder={t("AddProduct.price")} onChange={(e) => setPrice(e.target.value)} />
+            <InputText className={styles.input} value={currency} placeholder={t("AddProduct.currency")} onChange={(e) => setCurrency(e.target.value)} />
             <div className={styles.btn}>
-               <button onClick={onSubmit}>{isEditing ? "Update" : "Submit"}</button>
+               <button onClick={onSubmit}>{isEditing ? t("basics.update") : t("basics.submit")}</button>
             </div>
          </div>
       </div>

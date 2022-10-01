@@ -1,0 +1,92 @@
+{
+   "Navbar": {
+      "login": "УВІЙТИ",
+      "signup": "ЗАРЕЄСТРУВАТИСЯ",
+      "logout": "ВИЙТИ",
+      "menu": "Меню",
+      "menu-list": {
+         "home": "домівка",
+         "my_posts": "мої пости",
+         "my_products": "мої товари",
+         "users": "користувачі",
+         "profile": "профіль"
+      }
+   },
+   "Profile": {
+      "posts": "постів",
+      "products": "товарів",
+      "friends": "друзів",
+      "joined": "приєднався"
+   },
+   "AddPost": {
+      "products_number": "кількість товарів",
+      "select_products": "вибрані товари"
+   },
+   "AddProduct": {
+      "price": "ціна",
+      "currency": "валюта"
+   },
+   "EditProfile": {
+      "add_avatar": "додати аватарку",
+      "remove_avatar": "забрати аватарку",
+      "basic": "базове",
+      "change_language": "змінити мову",
+      "current_password": "поточний пароль",
+      "new_password": "новий пароль",
+      "repeat_new_password": "повторіть поточний пароль",
+      "update_info": "оновити дані",
+      "update_password": "оновити пароль",
+      "change_password": "змінити пароль"
+   },
+   "FullProduct": {
+      "remove_product": "видалити товар"
+   },
+   "MyPosts": {
+      "create_new": "Створімо новий пост!"
+   },
+   "MyProducts": {
+      "create_new": "Створімо новий товар!"
+   },
+   "Posts": {
+      "no_posts": "Користувач немає постів"
+   },
+   "Products": {
+      "no_products": "Користувач немає товарів"
+   },
+   "Users": {
+      "search": "знайти",
+      "user_name": "ім'я..."
+   },
+   "Login": {
+      "login": "Увійти",
+      "login_button": "увійти"
+   },
+   "Register": {
+      "register": "Регістрація",
+      "register_button": "Зареєструватися"
+   },
+   "NoPage": {
+      "not_found": "Сторінка не знайдена"
+   },
+   "basics": {
+      "add_preview": "додати фото",
+      "remove_preview": "забрати фото",
+      "submit": "Cтворити",
+      "update": "Оновити",
+      "add": "додати",
+      "enter_username": "Введіть ім'я",
+      "enter_email": "Введіть електронну пошту",
+      "enter_password": "Введіть пароль"
+   },
+   "placeholders": {
+      "title": "назва",
+      "tags": "теги",
+      "description": "опис",
+      "your_name": "ваше ім'я",
+      "your_email": "ваша електронна пошта",
+      "tell_about": "розкажіть про себе",
+      "username": "ім'я",
+      "password": "пароль",
+      "email": "електронна пошта"
+   }
+}

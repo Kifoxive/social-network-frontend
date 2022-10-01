@@ -29,9 +29,9 @@
   margin: 0 10px;
   display: flex;
   cursor: pointer;
-  width: 140px;
+  min-width: 140px;
   box-sizing: border-box;
-  padding: 5px 0;
+  padding: 5px 20px;
   background-color: lightgrey;
   border-radius: 0.4rem;
   border: 2px solid rgb(91, 73, 27);

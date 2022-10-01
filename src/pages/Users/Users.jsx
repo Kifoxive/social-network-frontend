@@ -4,15 +4,16 @@ import withHeaderHOC from "@components/Header/Header"
 
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUsersByName } from '../../redux/slices/usersSlice';
+import debounce from "lodash/debounce";
+import { useTranslation } from 'react-i18next';
 import UserBlock from '@components/UserBlock/UserBlock';
 import { InputText } from '@components/Input/Input';
-import debounce from "lodash/debounce";
 
 const Users = () => {
    const dispatch = useDispatch()
    const usersData = useSelector((state) => state.users.allUsers.items)
    const [searchText, setSearchText] = React.useState("")
-
+   const { t } = useTranslation()
    const users = usersData.map((item) => <UserBlock {...item} key={item._id} />)
 
    const handleChange = (e) => {
@@ -30,8 +31,8 @@ const Users = () => {
    return (<div className={styles.container}>
       <div className={styles.wrapper}>
          <div className={styles.search}>
-            <p>search:  </p>
-            <InputText onChange={handleChange} value={searchText} placeholder="first name..." />
+            <p>{t("Users.search")}: </p>
+            <InputText onChange={handleChange} value={searchText} placeholder={t("Users.user_name")} />
          </div>
          {users}
       </div>

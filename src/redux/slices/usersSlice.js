@@ -15,13 +15,6 @@ export const fetchUsersByName = createAsyncThunk(
     return data
   }
 )
-export const fetchUpdateUser = createAsyncThunk(
-  "users/fetchUpdateUser",
-  async (fields) => {
-    const { data } = await usersApi.updateProfile(fields)
-    return data
-  }
-)
 
 const initialState = {
   allUsers: {

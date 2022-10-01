@@ -8,6 +8,7 @@ import { selectIsAuth } from '../../redux/slices/authSlice'
 import { fetchAddImage, fetchOnePost, fetchSendPost, fetchUpdatePost } from '../../redux/slices/postsSlice';
 import { InputButton, InputText, InputTextarea } from '@components/Input/Input';
 import { fetchMineProducts } from '../../redux/slices/productsSlice';
+import { useTranslation } from 'react-i18next';
 import ProductCell from './ProductCell';
 
 const AddPost = () => {
@@ -21,6 +22,7 @@ const AddPost = () => {
    const [availableProducts, setAvailableProducts] = React.useState([])
    const [showProducts, setShowProducts] = React.useState(false)
    const [selectedProducts, setSelectedProducts] = React.useState({})
+   const { t } = useTranslation()
 
    const isAuth = useSelector(selectIsAuth)
    const inputFileRef = React.useRef(null)
@@ -112,22 +114,22 @@ const AddPost = () => {
                   </div>
                   : <>
                      <div className={styles.btn}>
-                        <button onClick={() => inputFileRef.current.click()}>Add preview</button>
-                        {imageUrl && <button onClick={onClickRemoveImage}>Remove preview</button>}
+                        <button onClick={() => inputFileRef.current.click()}>{t("basics.add_preview")}</button>
+                        {imageUrl && <button onClick={onClickRemoveImage}>{t("basics.remove_preview")}</button>}
                         <input onChange={handleChangeFile} ref={inputFileRef} type="file" hidden /></div>
                      {imageUrl && <div className={styles.image}>
                         <img src={`http://localhost:3001${imageUrl}`} alt="poster" />
                      </div>}
-                     <InputText className={styles.input} value={title} onChange={(e) => setTitle(e.target.value)} placeholder={'title'} />
-                     <InputText className={styles.input} value={tags} onChange={(e) => setTags(e.target.value)} placeholder={'tags'} />
-                     <InputTextarea value={text} onChange={(e) => setText(e.target.value)} placeholder="type..." />
+                     <InputText className={styles.input} value={title} onChange={(e) => setTitle(e.target.value)} placeholder={t("placeholders.title")} />
+                     <InputText className={styles.input} value={tags} onChange={(e) => setTags(e.target.value)} placeholder={t("placeholders.tags")} />
+                     <InputTextarea value={text} onChange={(e) => setText(e.target.value)} placeholder={t("placeholders.description")} />
                      <div className={styles.selectedTitlesContainer}>
-                        <p className={styles.productsCounter}>products number: <span>{Object.keys(selectedProducts).length}</span></p>
+                        <p className={styles.productsCounter}>{t("AddPost.products_number")}: <span>{Object.keys(selectedProducts).length}</span></p>
                         {getSelectedProductsTitle(selectedProducts)}
                      </div>
-                     <InputButton value="select products" onClick={() => { setShowProducts(true) }} />
+                     <InputButton value={t("AddPost.select_products")} onClick={() => { setShowProducts(true) }} />
                      <div className={styles.btn}>
-                        <button onClick={onSubmit}>{isEditing ? "Update" : "Submit"}</button>
+                        <button onClick={onSubmit}>{isEditing ? t("basics.update") : t("basics.submit")}</button>
                      </div>
                   </>
             }

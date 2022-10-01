@@ -28,8 +28,7 @@ const Post = ({
    const [removeIsDisable, setRemoveIsDisable] = React.useState(false)
 
    const userData = useSelector((state) => state.auth.data)
-   const isOwner = (userData?._id === user._id)
-
+   const isOwner = (userData?._id === user._id);
    const products = selectedProducts.map((item) => <Product key={item._id} {...item.product} isFullProduct={false} />)
 
    const onRemove = async () => {

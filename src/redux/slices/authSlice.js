@@ -8,16 +8,28 @@ export const fetchLogin = createAsyncThunk(
     return data
   }
 )
-
 export const fetchAuthMe = createAsyncThunk("auth/fetchAuthMe", async () => {
   const { data } = await authApi.me()
   return data
 })
-
 export const fetchRegister = createAsyncThunk(
   "auth/fetchRegister",
   async (params) => {
     const { data } = await authApi.register(params)
+    return data
+  }
+)
+export const fetchUpdatePassword = createAsyncThunk(
+  "auth/fetchUpdatePassword",
+  async (params) => {
+    const { data } = await authApi.changePassword(params)
+    return data
+  }
+)
+export const fetchUpdateUser = createAsyncThunk(
+  "users/fetchUpdateUser",
+  async (fields) => {
+    const { data } = await authApi.updateProfile(fields)
     return data
   }
 )
@@ -36,6 +48,7 @@ const authSlice = createSlice({
     },
   },
   extraReducers: {
+    // login
     [fetchLogin.pending]: (state) => {
       state.status = "loading"
       state.data = null
@@ -48,6 +61,7 @@ const authSlice = createSlice({
       state.status = "error"
       state.data = null
     },
+    // auth me
     [fetchAuthMe.pending]: (state) => {
       state.status = "loading"
       state.data = null
@@ -60,6 +74,7 @@ const authSlice = createSlice({
       state.status = "error"
       state.data = null
     },
+    // register
     [fetchRegister.pending]: (state) => {
       state.status = "loading"
       state.data = null
@@ -71,6 +86,30 @@ const authSlice = createSlice({
     [fetchRegister.rejected]: (state) => {
       state.status = "error"
       state.data = null
+    },
+    // update profile
+    [fetchUpdateUser.pending]: (state) => {
+      state.status = "loading"
+      state.data = null
+    },
+    [fetchUpdateUser.fulfilled]: (state, action) => {
+      state.status = "loaded"
+      state.data = action.payload
+    },
+    [fetchUpdateUser.rejected]: (state) => {
+      state.status = "error"
+      state.data = null
+    },
+    // update password
+    [fetchUpdatePassword.pending]: (state) => {
+      state.status = "loading"
+    },
+    [fetchUpdatePassword.fulfilled]: (state, action) => {
+      state.status = "loaded"
+      state.data = action.payload
+    },
+    [fetchUpdatePassword.rejected]: (state) => {
+      state.status = "error"
     },
   },
 })
