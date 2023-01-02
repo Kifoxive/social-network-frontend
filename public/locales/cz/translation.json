@@ -1,0 +1,120 @@
+{
+   "Navbar": {
+      "login": "Přihlášeni",
+      "signup": "Registrace",
+      "logout": "Odhlásit se",
+      "menu": "Menu",
+      "menu-list": {
+         "home": "domov",
+         "my_posts": "moje příspěvky",
+         "my_products": "moje zboží",
+         "users": "uživatelé",
+         "profile": "profil"
+      }
+   },
+   "Profile": {
+      "posts": "příspěvky",
+      "products": "zboží",
+      "friends": "přátelé",
+      "joined": "se připojil"
+   },
+   "AddPost": {
+      "products_number": "počet zboží",
+      "select_products": "vybrané zboží"
+   },
+   "AddProduct": {
+      "price": "cena",
+      "currency": "měna"
+   },
+   "EditProfile": {
+      "add_avatar": "přidat profilovku",
+      "remove_avatar": "odstranit profilovku",
+      "basic": "základní",
+      "change_language": "změnit jazyk",
+      "current_password": "aktuální heslo",
+      "new_password": "nové heslo",
+      "repeat_new_password": "opakujte nové heslo",
+      "update_info": "aktualizovat informace",
+      "update_password": "aktualizovat heslo",
+      "change_password": "změnit heslo",
+      "lang": {
+         "gb": "Angličtina",
+         "cz": "Čeština",
+         "ua": "Ukrajinština"
+      }
+   },
+   "FullProduct": {
+      "remove_product": "odstranit příspěvek"
+   },
+   "MyPosts": {
+      "create_new": "Pojďme vytvořit nové příspěvky!"
+   },
+   "MyProducts": {
+      "create_new": "Pojďme vytvořit nové zboží!í"
+   },
+   "Posts": {
+      "no_posts": "Uživatel nemá žádné příspěvky"
+   },
+   "Products": {
+      "no_products": "Uživatel nemá žádné zboží"
+   },
+   "Users": {
+      "search": "hledat",
+      "user_name": "jméno..."
+   },
+   "Comments": {
+      "comment": "komentář...",
+      "comment_button": "komentovat"
+   },
+   "Login": {
+      "login": "Přihlášení",
+      "login_button": "přihlásit se"
+   },
+   "Register": {
+      "register": "Registrace",
+      "register_button": "registrovat"
+   },
+   "NoPage": {
+      "not_found": "Stránka nebyla nalezena"
+   },
+   "basics": {
+      "add_preview": "přidat náhled",
+      "remove_preview": "odstranit náhled",
+      "submit": "Odeslat",
+      "update": "Aktualizovat",
+      "add": "přidat",
+      "enter_username": "Zadejte jméno",
+      "enter_email": "Zadejte email",
+      "enter_password": "Zadejte heslo"
+   },
+   "placeholders": {
+      "title": "záhlaví",
+      "tags": "tags",
+      "description": "popis",
+      "your_name": "vaše jméno",
+      "your_email": "váš email",
+      "tell_about": "řekněte něco o sobě",
+      "username": "uživatelské jméno",
+      "email": "email",
+      "password": "heslo"
+   },
+   "pages": {
+      "AddPost": "přidat příspěvek",
+      "AddProduct": "přidat zboží",
+      "Comments": "komentáře",
+      "EditProfile": "upravit profil",
+      "Friends": "přátelé",
+      "FullPost": "příspěvek",
+      "FullProduct": "zboží",
+      "Home": "domov",
+      "MyPosts": "moje příspěvky",
+      "MyProducts": "moje zboží",
+      "Posts": "příspěvky",
+      "Products": "zboží",
+      "Profile": "profil",
+      "Users": "uživatelé",
+      "Login": "přihlášeni",
+      "Register": "registrace",
+      "NoPage": "stránka nebyla nalezena"
+   }
+}

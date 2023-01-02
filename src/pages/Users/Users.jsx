@@ -1,11 +1,11 @@
 import React from 'react'
 import styles from './Users.module.css'
-import withHeaderHOC from "@components/Header/Header"
 
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUsersByName } from '../../redux/slices/usersSlice';
 import debounce from "lodash/debounce";
 import { useTranslation } from 'react-i18next';
+import Header from "@components/Header/Header"
 import UserBlock from '@components/UserBlock/UserBlock';
 import { InputText } from '@components/Input/Input';
 
@@ -28,15 +28,19 @@ const Users = () => {
       }, 500)
       , [])
 
-   return (<div className={styles.container}>
-      <div className={styles.wrapper}>
-         <div className={styles.search}>
-            <p>{t("Users.search")}: </p>
-            <InputText onChange={handleChange} value={searchText} placeholder={t("Users.user_name")} />
-         </div>
-         {users}
-      </div>
-   </div>)
+   return (
+      <>
+         <Header locationName={t("pages.Users")} />
+         <div className={styles.container}>
+            <div className={styles.wrapper}>
+               <div className={styles.search}>
+                  <p>{t("Users.search")}: </p>
+                  <InputText onChange={handleChange} value={searchText} placeholder={t("Users.user_name")} />
+               </div>
+               {users}
+            </div>
+         </div>\
+      </>)
 }
 
-export default withHeaderHOC(Users, "users")
+export default Users

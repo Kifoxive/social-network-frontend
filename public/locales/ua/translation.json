@@ -36,7 +36,12 @@
       "repeat_new_password": "повторіть поточний пароль",
       "update_info": "оновити дані",
       "update_password": "оновити пароль",
-      "change_password": "змінити пароль"
+      "change_password": "змінити пароль",
+      "lang": {
+         "gb": "Англійська",
+         "cz": "Чеська",
+         "ua": "Українська"
+      }
    },
    "FullProduct": {
       "remove_product": "видалити товар"
@@ -56,6 +61,10 @@
    "Users": {
       "search": "знайти",
       "user_name": "ім'я..."
+   },
+   "Comments": {
+      "comment": "коментарій...",
+      "comment_button": "коментувати"
    },
    "Login": {
       "login": "Увійти",
@@ -88,5 +97,24 @@
       "username": "ім'я",
       "password": "пароль",
       "email": "електронна пошта"
+   },
+   "pages": {
+      "AddPost": "додати пост",
+      "AddProduct": "додати товар",
+      "Comments": "коментарії",
+      "EditProfile": "редагувати профіль",
+      "Friends": "друзі",
+      "FullPost": "пост",
+      "FullProduct": "товар",
+      "Home": "домівка",
+      "MyPosts": "мої пости",
+      "MyProducts": "мої товари",
+      "Posts": "пости",
+      "Products": "продукти",
+      "Profile": "профіль",
+      "Users": "користувачі",
+      "Login": "увійти",
+      "Register": "регістрація",
+      "NoPage": "без сторінки"
    }
 }

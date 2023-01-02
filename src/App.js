@@ -1,6 +1,6 @@
-import React from "react"
-import "./App.css"
-import { Routes, Route } from "react-router-dom"
+import React from "react";
+import "./App.css";
+import { Routes, Route } from "react-router-dom";
 import {
   Home,
   Login,
@@ -16,19 +16,22 @@ import {
   Posts,
   Products,
   EditProfile,
+  Friends,
   NoPage,
-} from "./pages"
-import { useDispatch, useSelector } from "react-redux"
-import { fetchAuthMe, selectIsAuth } from "./redux/slices/authSlice"
-import FullPost from "@components/Post/FullPost"
+} from "./pages";
+import { useDispatch } from "react-redux";
+import { fetchAuthMe, selectIsAuth } from "./redux/slices/authSlice";
+import FullPost from "@components/Post/FullPost";
 
 function App() {
-  const dispatch = useDispatch()
-  const isAuth = useSelector(selectIsAuth)
+  const dispatch = useDispatch();
+  // const isAuth = useSelector(selectIsAuth);
 
   React.useEffect(() => {
-    dispatch(fetchAuthMe())
-  }, [])
+    if (localStorage.getItem("token")) {
+      dispatch(fetchAuthMe());
+    }
+  }, []);
 
   return (
     <React.Suspense fallback={<div>Loading...</div>}>
@@ -51,11 +54,12 @@ function App() {
           <Route path="/profile/:id/posts" element={<Posts />}></Route>
           <Route path="/profile/:id/products" element={<Products />}></Route>
           <Route path="/profile/edit" element={<EditProfile />}></Route>
+          <Route path="/profile/:id/friends" element={<Friends />} />
           <Route path="*" element={<NoPage />} />
         </Routes>
       </div>
     </React.Suspense>
-  )
+  );
 }
 
-export default App
+export default App;

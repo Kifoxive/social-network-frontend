@@ -7,7 +7,7 @@
       "menu-list": {
          "home": "home",
          "my_posts": "my posts",
-         "my_products": "my prodcuts",
+         "my_products": "my products",
          "users": "users",
          "profile": "profile"
       }
@@ -36,7 +36,12 @@
       "repeat_new_password": "repeat new password",
       "update_info": "update info",
       "update_password": "update password",
-      "change_password": "change password"
+      "change_password": "change password",
+      "lang": {
+         "gb": "English",
+         "cz": "Czech",
+         "ua": "Ukrainian"
+      }
    },
    "FullProduct": {
       "remove_product": "delete product"
@@ -57,6 +62,10 @@
       "search": "search",
       "user_name": "username..."
    },
+   "Comments": {
+      "comment": "comment...",
+      "comment_button": "comment"
+   },
    "Login": {
       "login": "Log in",
       "login_button": "log in"
@@ -73,6 +82,7 @@
       "remove_preview": "Remove preview",
       "submit": "Submit",
       "update": "Update",
+      "add": "add",
       "enter_username": "Enter the fullname",
       "enter_email": "Enter the email",
       "enter_password": "Enter the password"
@@ -87,5 +97,24 @@
       "username": "username",
       "email": "email",
       "password": "password"
+   },
+   "pages": {
+      "AddPost": "add post",
+      "AddProduct": "add product",
+      "Comments": "comments",
+      "EditProfile": "edit profile",
+      "Friends": "friends",
+      "FullPost": "post",
+      "FullProduct": "product",
+      "Home": "home",
+      "MyPosts": "my posts",
+      "MyProducts": "my products",
+      "Posts": "posts",
+      "Products": "products",
+      "Profile": "profile",
+      "Users": "users",
+      "Login": "log in",
+      "Register": "sign up",
+      "NoPage": "no page"
    }
 }

@@ -1,10 +1,10 @@
 import React from 'react'
 import styles from './MyPosts.module.css'
-import withHeaderHOC from "@components/Header/Header"
 
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchMinePosts } from '../../redux/slices/postsSlice';
 import { useTranslation } from 'react-i18next';
+import Header from "@components/Header/Header"
 import Post from '@components/Post/Post';
 
 const MyPosts = () => {
@@ -20,18 +20,21 @@ const MyPosts = () => {
    }, [])
 
    return (
-      <div
-         className={styles.container}>
-         <div className={styles.wrapper}>
-            <div className={styles.addButton}><a href="/add-post">{t("basics.add")}</a></div>
-            <div className={styles.posts}>
-               {posts.length === 0
-                  ? <div className={styles.noPosts}>{t("MyPosts.create_new")}</div> :
-                  [posts]}
+      <>
+         <Header locationName={t("pages.MyPosts")} />
+         <div
+            className={styles.container}>
+            <div className={styles.wrapper}>
+               <div className={styles.addButton}><a href="/add-post">{t("basics.add")}</a></div>
+               <div className={styles.posts}>
+                  {posts.length === 0
+                     ? <div className={styles.noPosts}>{t("MyPosts.create_new")}</div> :
+                     [posts]}
+               </div>
             </div>
          </div>
-      </div>
+      </>
    )
 }
 
-export default withHeaderHOC(MyPosts, "my posts")
+export default MyPosts

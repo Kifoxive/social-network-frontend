@@ -23,14 +23,14 @@ const LanguageSwitcher = () => {
             <p className={`${styles.selected_lang} ${styles.list_item}`}>
                <button>
                   <img src={`https://www.countryflagicons.com/FLAT/32/${i18n.language.toUpperCase()}.png`} alt={i18n.language} />
-                  <span>{languages[i18n.language]}</span>
+                  <span>{t(`EditProfile.lang.${i18n.language}`)}</span>
                </button>
             </p>
             <ul>
                {availableLanguages.map((lang, index) => <li key={index} className={styles.list_item}>
                   <button onClick={() => changeLanguage(lang)}>
                      <img src={`https://www.countryflagicons.com/FLAT/32/${lang.toUpperCase()}.png`} alt={lang} />
-                     <span>{languages[lang]}</span>
+                     <span>{t(`EditProfile.lang.${lang}`)}</span>
                   </button>
                </li>)}
             </ul>

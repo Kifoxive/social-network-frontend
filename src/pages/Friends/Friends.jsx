@@ -1,19 +1,24 @@
 import React from 'react'
 import styles from './Friends.module.css'
-import withHeaderHOC from "@components/Header/Header"
 
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import Header from "@components/Header/Header"
 
 const Friends = () => {
    const dispatch = useDispatch()
+   const { t } = useTranslation()
 
    return (
-      <div className={styles.container}>
-         <div className={styles.wrapper}>
-            page
+      <>
+         <Header locationName={t("pages.Friends")} />
+         <div className={styles.container}>
+            <div className={styles.wrapper}>
+               page
+            </div>
          </div>
-      </div>
+      </>
    )
 }
 
-export default withHeaderHOC(Friends, "friends")
+export default Friends
